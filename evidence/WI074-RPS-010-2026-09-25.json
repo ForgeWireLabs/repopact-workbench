@@ -1,0 +1,76 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-010-feature-parity-2026-09-25",
+  "work_item": "WI074",
+  "requirement": "RPS-010",
+  "recorded_at": "2026-09-25T22:11:50Z",
+  "baseline_commit": "a1876b08b78f169a79597ec3099d9840ace55e06",
+  "implementation_commit": "9894b03eb77bc70bdee2aebcbc712de307c254a6",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a",
+  "result": "passed on Windows and Linux",
+  "checks": [
+    {
+      "platform": "Windows 11 x64",
+      "command": "cargo test --workspace --all-targets --locked --jobs 2 --quiet",
+      "result": "245 passed, 10 ignored, 0 failed",
+      "suite_counts": {
+        "desktop": 20,
+        "desktop_api": 21,
+        "generated_types": 7,
+        "verification_validation_parity": 1,
+        "mobile_acquisition": 77,
+        "mobile_saf": 3,
+        "provider_github": 87,
+        "remote_provider": 27,
+        "provider_neutrality": 2
+      }
+    },
+    {
+      "platform": "Debian under WSL2 x86_64",
+      "command": "cargo test --workspace --all-targets --locked --jobs 2 --quiet",
+      "result": "245 passed, 10 ignored, 0 failed",
+      "environment": "Disposable HOME, XDG config/data/cache/runtime, isolated CARGO_HOME and target; existing rustup toolchain selected explicitly; no Git credential helper/config; disposable GNOME Keyring Secret Service under a D-Bus session. Independent synthetic Secret Service read/write/delete check passed and its data directory was absent after the run."
+    },
+    {
+      "platform": "Windows frontend",
+      "commands": [
+        "npm run test -- --run",
+        "npm run typecheck",
+        "npm run types:check",
+        "npm run build"
+      ],
+      "result": "33 tests across 8 files passed; typecheck, generated-type consistency and production bundle passed"
+    },
+    {
+      "platform": "Windows native desktop",
+      "command": "cargo build -p repopact-desktop --locked --jobs 2",
+      "result": "passed"
+    },
+    {
+      "platform": "Android x86_64 API 35 build",
+      "command": "npx tauri android build --debug --apk --target x86_64 --features android-debug-validation --ci",
+      "result": "APK build passed; no Android runtime claim",
+      "artifact_sha256": "A6AC7A3F9DE7F467E32EEA141DF830E0973506ABEF43AA1C732D9C98B6A27AA4"
+    },
+    {
+      "platform": "Dependency resolution",
+      "commands": [
+        "cargo metadata --locked --format-version 1",
+        "cargo tree --locked"
+      ],
+      "result": "all eight Workbench Core crate dependencies resolved from https://github.com/ForgeWireLabs/repopact-core at the same immutable revision e15fbcfa4a29e1e6df7339bfed56c15c19185f9a; pin retained"
+    }
+  ],
+  "covered_contracts": [
+    "typed Tauri command and DTO contracts",
+    "repository session switching and stale-plan invalidation",
+    "snapshot generation reuse without repeated Git fanout",
+    "watcher refresh coalescing and generated-directory exclusions",
+    "graph query basis, status, and read-only verification behavior",
+    "governed mutation preview/apply handles and stale authorization rejection",
+    "generated TypeScript DTO parity and Core-owned semantic boundary"
+  ],
+  "acceptance": "satisfied",
+  "limitations": "Android APK compiled but was not installed because the isolated AVD requires 7372.80 MB free and only 2409.34 MB was available. No Android runtime result is used to satisfy this contract-test criterion."
+}
