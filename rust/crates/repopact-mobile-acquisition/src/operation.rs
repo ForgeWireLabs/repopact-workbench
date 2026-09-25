@@ -74,7 +74,7 @@ pub struct ProgressThrottle {
     phase: OperationPhase,
     min_interval: Duration,
     min_entry_step: u64,
-    last_emit: Instant,
+    last_emit: Option<Instant>,
     last_emitted_entries: u64,
     entries_processed: AtomicU64,
     bytes_processed: AtomicU64,
@@ -87,7 +87,11 @@ impl ProgressThrottle {
             phase,
             min_interval: Duration::from_millis(150),
             min_entry_step: 25,
-            last_emit: Instant::now() - Duration::from_secs(3600),
+            // `Instant` has an arbitrary platform-defined origin. Subtracting
+            // an hour from `now` can underflow on Windows shortly after boot.
+            // `None` models the initial state without inventing a past instant
+            // and makes the first progress event immediately eligible.
+            last_emit: None,
             last_emitted_entries: 0,
             entries_processed: AtomicU64::new(0),
             bytes_processed: AtomicU64::new(0),
@@ -110,12 +114,14 @@ impl ProgressThrottle {
         mut emit: impl FnMut(OperationProgress),
     ) {
         let entries = self.entries_processed.load(Ordering::Relaxed);
-        let due_by_time = self.last_emit.elapsed() >= self.min_interval;
+        let due_by_time = self
+            .last_emit
+            .map_or(true, |last_emit| last_emit.elapsed() >= self.min_interval);
         let due_by_count = entries.saturating_sub(self.last_emitted_entries) >= self.min_entry_step;
         if !force && !due_by_time && !due_by_count {
             return;
         }
-        self.last_emit = Instant::now();
+        self.last_emit = Some(Instant::now());
         self.last_emitted_entries = entries;
         emit(OperationProgress {
             operation_id: self.operation_id.clone(),
@@ -228,6 +234,42 @@ impl Drop for OperationGuard<'_> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn progress_throttle_emits_first_event_without_past_instant_arithmetic() {
+        let mut throttle = ProgressThrottle::new("operation-1", OperationPhase::Importing);
+        throttle.record(17);
+        let mut emitted = Vec::new();
+
+        throttle.maybe_emit(Some("README.md"), Some(1), false, |event| {
+            emitted.push(event)
+        });
+
+        assert_eq!(emitted.len(), 1);
+        assert_eq!(emitted[0].operation_id, "operation-1");
+        assert_eq!(emitted[0].entries_processed, 1);
+        assert_eq!(emitted[0].bytes_processed, 17);
+        assert_eq!(emitted[0].current_relative_path.as_deref(), Some("README.md"));
+    }
+
+    #[test]
+    fn progress_throttle_still_limits_events_after_the_initial_emit() {
+        let mut throttle = ProgressThrottle::new("operation-2", OperationPhase::Exporting);
+        let mut emitted = Vec::new();
+        throttle.record(1);
+        throttle.maybe_emit(None, None, false, |event| emitted.push(event));
+
+        throttle.record(1);
+        throttle.maybe_emit(None, None, false, |event| emitted.push(event));
+        assert_eq!(emitted.len(), 1, "small progress updates remain throttled");
+
+        for _ in 0..25 {
+            throttle.record(1);
+        }
+        throttle.maybe_emit(None, None, false, |event| emitted.push(event));
+        assert_eq!(emitted.len(), 2, "the entry-count threshold still emits");
+        assert_eq!(emitted[1].entries_processed, 27);
+    }
 
     #[test]
     fn coordinator_rejects_concurrent_operation() {
