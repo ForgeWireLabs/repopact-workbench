@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "scopes": [
+    {"id": "application", "paths": ["Cargo.toml", "Cargo.lock", "rust/**", "src-tauri/**", "src/**", "scripts/**", "package.json", "package-lock.json", "tsconfig.json", "vite.config.ts"], "owner": "workbench-maintainer"},
+    {"id": "governance", "paths": ["AGENTS.md", "governance/**", "decisions/**", "work/**"], "owner": "workbench-coordinator"},
+    {"id": "evidence", "paths": ["evidence/**"], "owner": "workbench-evidence-owner"},
+    {"id": "docs", "paths": ["README.md", "docs/**", "LICENSE", ".gitignore"], "owner": "workbench-docs-owner"}
+  ]
+}

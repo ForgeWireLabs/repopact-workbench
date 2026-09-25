@@ -1,0 +1,49 @@
+[package]
+name = "repopact-desktop"
+version = "0.1.0"
+description = "RepoPact desktop governance workbench"
+authors = ["ForgeWireLabs"]
+edition = "2021"
+publish = false
+
+[lib]
+# Standard Tauri desktop/mobile shared-crate shape (WI060): the mobile
+# runtime loads this as a static/dynamic library and calls the
+# `tauri::mobile_entry_point`-annotated `run()` in src/lib.rs; the desktop
+# binary target (src/main.rs) links the same rlib and calls the same `run()`.
+name = "repopact_desktop_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.5.3", features = [] }
+
+[dependencies]
+repopact-analysis.workspace = true
+repopact-desktop-api.workspace = true
+repopact-mobile-acquisition.workspace = true
+repopact-mobile-saf.workspace = true
+repopact-mobile-credential.workspace = true
+repopact-remote-provider.workspace = true
+repopact-provider-github.workspace = true
+repopact-types.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tauri = { version = "2.11.5", features = [] }
+tauri-plugin-dialog = "2.7.3"
+# Decision 0062: opens the trusted GitHub browser-authorization URL and the
+# GitHub App installation page in the user's real system browser, never an
+# embedded WebView -- both built and opened entirely natively
+# (`remote_connect_start`/`remote_open_installation_page`), never from a
+# frontend-supplied URL.
+tauri-plugin-opener = "2"
+uuid = { version = "1", features = ["v4"] }
+
+[dev-dependencies]
+tempfile = "3.23.0"
+
+[features]
+custom-protocol = ["tauri/custom-protocol"]
+# WI060 AND-007: gates the debug-only, app-private Android validation
+# repository path. Never enabled in a production/release build; see
+# src/android_validation.rs.
+android-debug-validation = []

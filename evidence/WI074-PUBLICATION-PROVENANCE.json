@@ -1,0 +1,1053 @@
+{
+  "format": "repopact-publication-provenance-v1",
+  "repository": "ForgeWireLabs/repopact-workbench",
+  "integrated_source_commit": "8f1ce8deb139287655afcc8479dc69dd621d8720",
+  "workbench_extraction_commit": "5678bdb1d04f8582fcf5ddc5b3fc8cb884199342",
+  "core_publication_commit": "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a",
+  "source_manifest_sha256": "2c02ea2e18c64ac489d21d4f4cf15b1f66f2d3c336c661514a513a750bc37150",
+  "core_repository": "https://github.com/ForgeWireLabs/repopact-core",
+  "included_file_count": 206,
+  "included_files": [
+    {
+      "source_path": ".gitignore",
+      "path": ".gitignore",
+      "sha256": "de77c433f8aa0940c3f383a116ec129dde758021a0ae9bc0b8776019f69a88fa"
+    },
+    {
+      "source_path": "AGENTS.md",
+      "path": "AGENTS.md",
+      "sha256": "8263f248f83d1707893bfd9b7fca50f7680d5bcfaf350a1581921a535686c2d7"
+    },
+    {
+      "source_path": "Cargo.lock",
+      "path": "Cargo.lock",
+      "sha256": "1ed73dc2b0603e77b78ac50a6ad06f0f1df46242eb040c9902f8535441e1b627"
+    },
+    {
+      "source_path": "Cargo.toml",
+      "path": "Cargo.toml",
+      "sha256": "ffa7850e81f427ec43ccb593115651390d2736a3adeb95a1f39a3399c16cba0a"
+    },
+    {
+      "source_path": "LICENSE",
+      "path": "LICENSE",
+      "sha256": "084ea24742cdcfaa4767f7c29588e596d8e78f5fd2ffcf1da000944c03dd1469"
+    },
+    {
+      "source_path": "README.md",
+      "path": "README.md",
+      "sha256": "9044215bd0d6146bd65f33b2ae88acecc1a55e6277b29ee050a6c80711cfe72b"
+    },
+    {
+      "source_path": "decisions/README.md",
+      "path": "decisions/README.md",
+      "sha256": "3bfb571267e0acbab5488d514ec59f0e08fc8a69bed7b5101cdf1534e3ac7169"
+    },
+    {
+      "source_path": "docs/guides/github-app-setup.md",
+      "path": "docs/guides/github-app-setup.md",
+      "sha256": "7d03177b66c5a98ff3f98933b1f575aae4c16cb65cd0382c006523f94d7cdb6b"
+    },
+    {
+      "source_path": "docs/guides/github-snapshot-import.md",
+      "path": "docs/guides/github-snapshot-import.md",
+      "sha256": "f9714a46d1e0447f6cdd78eb08b9d0b62956a2833856366a64617d89747f28f3"
+    },
+    {
+      "source_path": "evidence/README.md",
+      "path": "evidence/README.md",
+      "sha256": "4e49486ac388b6fbc26dac5c91e9c4e64aa73b480e0c66f46f2b5a737e22bd54"
+    },
+    {
+      "source_path": "governance/README.md",
+      "path": "governance/README.md",
+      "sha256": "1e014e053ba34d950904d5269e03b6bf12c269d6e75414f88588b4b741bccb35"
+    },
+    {
+      "source_path": "governance/invariants.json",
+      "path": "governance/invariants.json",
+      "sha256": "8d9d56151657e10d27dfeb2f2053cdbe91a1dc067587e70fa263aac99773736b"
+    },
+    {
+      "source_path": "governance/owners.json",
+      "path": "governance/owners.json",
+      "sha256": "3f56939dc80fa28822640ae45a43776b744c25b25e11ab8dd9a29a7a2ed6329f"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/index.html",
+      "path": "index.html",
+      "sha256": "3331c055975afd2c44c3a23b50511694eaf60fbfbe457482a2a4771ee7ca9d61"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/package-lock.json",
+      "path": "package-lock.json",
+      "sha256": "c159bae10b261ed8cf9961b95a90707d7a796ff4a64eba2b09f36a4697c24318"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/package.json",
+      "path": "package.json",
+      "sha256": "f8f4051e46e4f3c6b53b053818fa2883b0c65d4d506fce6575e707c4980cc73b"
+    },
+    {
+      "source_path": "rust/crates/repopact-desktop-api/Cargo.toml",
+      "path": "rust/crates/repopact-desktop-api/Cargo.toml",
+      "sha256": "aa2677436c4b3270ad524ce977788e7da7061982f38ea61b209e5d92ab05092a"
+    },
+    {
+      "source_path": "rust/crates/repopact-desktop-api/src/bin/desktop-smoke.rs",
+      "path": "rust/crates/repopact-desktop-api/src/bin/desktop-smoke.rs",
+      "sha256": "4797475e2ce0667958ba00af4e8596a971b7e8c27bad71b8f11fbf6c51138949"
+    },
+    {
+      "source_path": "rust/crates/repopact-desktop-api/src/bin/generate-types.rs",
+      "path": "rust/crates/repopact-desktop-api/src/bin/generate-types.rs",
+      "sha256": "a585d69781f5141fd2c70365072682692cbf21489c3ea3b30f2e3b66cc8332d7"
+    },
+    {
+      "source_path": "rust/crates/repopact-desktop-api/src/lib.rs",
+      "path": "rust/crates/repopact-desktop-api/src/lib.rs",
+      "sha256": "2cc2055b06cfb7e375cb67145b94d9a6ec73c340e373da869dcb5499f2bd1684"
+    },
+    {
+      "source_path": "rust/crates/repopact-desktop-api/tests/verification_validation_parity.rs",
+      "path": "rust/crates/repopact-desktop-api/tests/verification_validation_parity.rs",
+      "sha256": "efc5bade08e81e25a8b9d1b152a4cc6557d8f86e719054c8f1a2bd9e812dbcee"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/Cargo.toml",
+      "path": "rust/crates/repopact-mobile-acquisition/Cargo.toml",
+      "sha256": "d39e44eb2031b024fbf8e3fb9fbf381aa14b5c3cc59562d3445c7fbcf7e1be6e"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/archive.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/archive.rs",
+      "sha256": "409e7c7d9922c781fbc406622c1f601412499a6f659d2940e34f882da86e81f2"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/bounds.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/bounds.rs",
+      "sha256": "1fe147deb85ca5d1c7073e2fe86f18aa5e4ebf6bfeb6a8516ab92be93819fa35"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/divergence.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/divergence.rs",
+      "sha256": "b6944d66e2e0db271cba5594d88d251f6ce24e0138469219261f716162912967"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/error.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/error.rs",
+      "sha256": "850871dc2fe662b61026a487459150e8ecb694b206566314b282b57509a0fe5b"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/export.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/export.rs",
+      "sha256": "78151f28b4e731580e68ef788a91290b5fb3cf881b39db6a71da452947b0a96e"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/import.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/import.rs",
+      "sha256": "ff76d1d27c1636ccb328a1073c7eea18800a4200ab3e441e1f6a4eac12af8243"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/lib.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/lib.rs",
+      "sha256": "e0031c12b224a8d6ddef08eb0b726d203e6d670a60b734f6ae237b32aae41baf"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/operation.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/operation.rs",
+      "sha256": "5c717f8ebd021e7cd53c69f031791640bd25dd58412eb61b099856fd9bfc8102"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/paths.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/paths.rs",
+      "sha256": "c80d5478b016dd12d44c8d019b77e40d81755532f1c6b7d22b785d0bd03d8dcd"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/registry.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/registry.rs",
+      "sha256": "9dcd2eb92812ec284771718f5f44e164fd7df0b533ee93a65798c317655d553c"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/sink.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/sink.rs",
+      "sha256": "431c966010db3c5a1a59a60eba58845286858256d01c25552816068031e9bd25"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/source.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/source.rs",
+      "sha256": "584ff76ef61abcbf2fb9ff5bfa448acfb51d6ae94e6489fdd252cc1bedb258f1"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-acquisition/src/workspace.rs",
+      "path": "rust/crates/repopact-mobile-acquisition/src/workspace.rs",
+      "sha256": "4502a632108e4a8680c61f6ee614d653af5604af37ef9d44c4a17ce378a13ace"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/Cargo.toml",
+      "path": "rust/crates/repopact-mobile-credential/Cargo.toml",
+      "sha256": "e03b1a5887fb521db14f117171d65ce7b7715d79dd91bdeebbab781593bfd787"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/android/.gitignore",
+      "path": "rust/crates/repopact-mobile-credential/android/.gitignore",
+      "sha256": "28875486e5265da13525293f4ba78c591e3911b829a32ef7f1072c4cdf44234d"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/android/build.gradle.kts",
+      "path": "rust/crates/repopact-mobile-credential/android/build.gradle.kts",
+      "sha256": "b1a21b15be3b0d213559e103198fb2148d7bd943250fc57249eda5fb60f8665a"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/android/consumer-rules.pro",
+      "path": "rust/crates/repopact-mobile-credential/android/consumer-rules.pro",
+      "sha256": "4d69a3530f3e855b22122eda6f417d0d44016a46605fc5e0661fa900f4c26c00"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/android/src/main/AndroidManifest.xml",
+      "path": "rust/crates/repopact-mobile-credential/android/src/main/AndroidManifest.xml",
+      "sha256": "35f236f3126b0086d74770b4631a00cbe1e09420fecbc4108662004367e923f3"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/android/src/main/java/com/forgewirelabs/repopact/mobilecredential/RepopactCredentialPlugin.kt",
+      "path": "rust/crates/repopact-mobile-credential/android/src/main/java/com/forgewirelabs/repopact/mobilecredential/RepopactCredentialPlugin.kt",
+      "sha256": "b82d718e85a3269558cdcc1faa222e9c586f4ad1d0d729998d56e0c588c453dc"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/build.rs",
+      "path": "rust/crates/repopact-mobile-credential/build.rs",
+      "sha256": "b23f0403c263689f42df36ff3e19330fb2beb882d765581850404ca1b09c0603"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/src/desktop.rs",
+      "path": "rust/crates/repopact-mobile-credential/src/desktop.rs",
+      "sha256": "afe223c710a9789f4ce540d9653a6a53cdd696d7ee51beec3274e62acd957cb8"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/src/lib.rs",
+      "path": "rust/crates/repopact-mobile-credential/src/lib.rs",
+      "sha256": "63f3ff169aef69b0f0e9579a824708b788c886baa5a4cd7677a90dd14b58120a"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/src/mobile.rs",
+      "path": "rust/crates/repopact-mobile-credential/src/mobile.rs",
+      "sha256": "5bd2b3b6885ef2cee8b3d067868cb636948d45dd27ba5cd519f51fee9073ad75"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-credential/src/models.rs",
+      "path": "rust/crates/repopact-mobile-credential/src/models.rs",
+      "sha256": "3326093139f409f376f00ddb49cb5a5782e57d968c9dcd91ef67f9f948f91377"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/Cargo.toml",
+      "path": "rust/crates/repopact-mobile-saf/Cargo.toml",
+      "sha256": "9f024f4b817258345924d4bca9c6ef9e58d353c0bbbb588c062556a60ff9895d"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/android/.gitignore",
+      "path": "rust/crates/repopact-mobile-saf/android/.gitignore",
+      "sha256": "fdbd5cf7c75f19d686ef755ac21d20dd525ff9495eaca3acb40e81fd3d99c173"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/android/build.gradle.kts",
+      "path": "rust/crates/repopact-mobile-saf/android/build.gradle.kts",
+      "sha256": "eb3ce076d25c454541a40653f977c6aa904511f0c5acceb5a31967ff715f462e"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/android/consumer-rules.pro",
+      "path": "rust/crates/repopact-mobile-saf/android/consumer-rules.pro",
+      "sha256": "4d69a3530f3e855b22122eda6f417d0d44016a46605fc5e0661fa900f4c26c00"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/android/src/main/AndroidManifest.xml",
+      "path": "rust/crates/repopact-mobile-saf/android/src/main/AndroidManifest.xml",
+      "sha256": "0322e0063c8fa1ad5bff59a1570465f43d7235a9d90dea92aea70b1e47082b41"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/android/src/main/java/com/forgewirelabs/repopact/mobileacquisition/SafAcquisitionPlugin.kt",
+      "path": "rust/crates/repopact-mobile-saf/android/src/main/java/com/forgewirelabs/repopact/mobileacquisition/SafAcquisitionPlugin.kt",
+      "sha256": "1b04eb44212e5532a1b68531f4f84bd70425f5485801a417186da4c5c93a4bb5"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/build.rs",
+      "path": "rust/crates/repopact-mobile-saf/build.rs",
+      "sha256": "eff401a799b0b81c650faeac974d7da3ab32b30db9c0fa5d1efb429d9c04186d"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/src/desktop.rs",
+      "path": "rust/crates/repopact-mobile-saf/src/desktop.rs",
+      "sha256": "b514bf52eb5ae1cbe6c0ac297593d181850b594bc920c64d3a48cc6e87d34a94"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/src/lib.rs",
+      "path": "rust/crates/repopact-mobile-saf/src/lib.rs",
+      "sha256": "d348f08ec95a1ce39214cebea7040a7ac705c60070d7a86ef619cd5cb3762f0f"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/src/mobile.rs",
+      "path": "rust/crates/repopact-mobile-saf/src/mobile.rs",
+      "sha256": "436a3364d06ef862956130041e1dade38409973e557f5d26fd015ba156e2f17e"
+    },
+    {
+      "source_path": "rust/crates/repopact-mobile-saf/src/models.rs",
+      "path": "rust/crates/repopact-mobile-saf/src/models.rs",
+      "sha256": "05580e5f7723ce0319184966dbcf71e6fbab7185a920544499e20da6ae142650"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/Cargo.toml",
+      "path": "rust/crates/repopact-provider-github/Cargo.toml",
+      "sha256": "d2dcdfad39c1201453590f6cbbd419bc5c5c4fbad4e462f21f614b84693eca83"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/api_version.rs",
+      "path": "rust/crates/repopact-provider-github/src/api_version.rs",
+      "sha256": "c277503c13efd0b7b2f5f8df96c6a0c2fe979930fd96d5768070bc722eb82721"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/browser_flow.rs",
+      "path": "rust/crates/repopact-provider-github/src/browser_flow.rs",
+      "sha256": "fa1fa689bf40bac4a8cf8c5804ac70797b46079e42dd51ca6bd64aeade64acb4"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/callback.rs",
+      "path": "rust/crates/repopact-provider-github/src/callback.rs",
+      "sha256": "ea87bc6cd83e9705ce9bf57d1db06a36d4ff2e80c91d00daaf874f73d609e622"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/device_flow.rs",
+      "path": "rust/crates/repopact-provider-github/src/device_flow.rs",
+      "sha256": "68d0151201c9f71c60273e249d509061e534f5b27cbe06f1d98edeab98e7dbc8"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/headers.rs",
+      "path": "rust/crates/repopact-provider-github/src/headers.rs",
+      "sha256": "8a8a57219e1cd40ae6203986bb5f82d8885b47374ac8f8bcaafeb0579211651c"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/lib.rs",
+      "path": "rust/crates/repopact-provider-github/src/lib.rs",
+      "sha256": "27ea0a29a83e04f05d393f0c4e75c4d4e460eed4687dd815b91bce6a5553a116"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/permissions.rs",
+      "path": "rust/crates/repopact-provider-github/src/permissions.rs",
+      "sha256": "d1c0d10dce3ffbe2f4a67b3f00045049bdf3c814d73cb91e96ae5e7b10a24394"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/provider.rs",
+      "path": "rust/crates/repopact-provider-github/src/provider.rs",
+      "sha256": "7678996c3a3964f190c1d037cf8e9bb62a689d3d339bf97a4514d901b77d4c43"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/redirect_policy.rs",
+      "path": "rust/crates/repopact-provider-github/src/redirect_policy.rs",
+      "sha256": "808ea5c58d3e6db9d3d226b6605943ab9783617cbf2952f90395e8b5a934a1f3"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/rest.rs",
+      "path": "rust/crates/repopact-provider-github/src/rest.rs",
+      "sha256": "701b96929edcaef51efadd2cd8541f6cfc02b0d5137fc0b12b2cfa1ff8123e4d"
+    },
+    {
+      "source_path": "rust/crates/repopact-provider-github/src/transport.rs",
+      "path": "rust/crates/repopact-provider-github/src/transport.rs",
+      "sha256": "2a368bea87badd28b4f44b5a9b2dec7be98e7b8f76ba4df630b4891d38125934"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/Cargo.toml",
+      "path": "rust/crates/repopact-remote-provider/Cargo.toml",
+      "sha256": "701bb0e7dab2f3ab127c0b233bc68ebb51648cb582e8465a1d525a48eb744ab3"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/account.rs",
+      "path": "rust/crates/repopact-remote-provider/src/account.rs",
+      "sha256": "e8b7120589c47a6903e3d13498736694960937137b631cc9a796f4741fc29a9e"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/auth.rs",
+      "path": "rust/crates/repopact-remote-provider/src/auth.rs",
+      "sha256": "d44e72afe98924df80f807cb9f3a561a847f18cae70ff51989b1e76fc148c846"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/credential.rs",
+      "path": "rust/crates/repopact-remote-provider/src/credential.rs",
+      "sha256": "f329e9f2e099d06947c4bedfc70146fafe402702bc5eb25424d6e3d0bc2fff4f"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/credential_os.rs",
+      "path": "rust/crates/repopact-remote-provider/src/credential_os.rs",
+      "sha256": "00f13845262c524aeb78bdf208e9ca963d4af46726ba4ae47230d7c0ae157b35"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/error.rs",
+      "path": "rust/crates/repopact-remote-provider/src/error.rs",
+      "sha256": "df2cac2478ddf971a95d6d0a36cba456c3947ee057c413e6908604935a7d1895"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/fake.rs",
+      "path": "rust/crates/repopact-remote-provider/src/fake.rs",
+      "sha256": "a412436529a0c8bc79a7ff1aeef980071a3a072c64e4ef5821b9e2267c5f327a"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/lib.rs",
+      "path": "rust/crates/repopact-remote-provider/src/lib.rs",
+      "sha256": "4ffd3b3ff3ee825c72080f54db7d581ef02edfc055cbde639bfa064a606d83cf"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/pkce.rs",
+      "path": "rust/crates/repopact-remote-provider/src/pkce.rs",
+      "sha256": "a83d5f4b22f9d0a5846686207e300b1b3b273cca1ccd8e4e669acfc2606ca9fa"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/provider.rs",
+      "path": "rust/crates/repopact-remote-provider/src/provider.rs",
+      "sha256": "a775dbbcb0b380358a4579f8fd1b9fa308be084d76208a9b7a5ece00662e72cb"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/redact.rs",
+      "path": "rust/crates/repopact-remote-provider/src/redact.rs",
+      "sha256": "265fd1e4820b0a803ba8d0e48a8c278f9b8ff2d675a7c54fa379930e8ae4d1ec"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/refs.rs",
+      "path": "rust/crates/repopact-remote-provider/src/refs.rs",
+      "sha256": "e036dfff73ebd2192e5c2005e88e6589ffbaa43add53483f4708f0de2613059f"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/repository.rs",
+      "path": "rust/crates/repopact-remote-provider/src/repository.rs",
+      "sha256": "1e6a248dd0d2abf484e0663f7d256150e993debfe73084d56236b09867bd157f"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/src/snapshot.rs",
+      "path": "rust/crates/repopact-remote-provider/src/snapshot.rs",
+      "sha256": "63377e41ce8162db46f0c66ff1c4ca93893c1ab8245d380c06ce130c75bbdc84"
+    },
+    {
+      "source_path": "rust/crates/repopact-remote-provider/tests/provider_neutrality.rs",
+      "path": "rust/crates/repopact-remote-provider/tests/provider_neutrality.rs",
+      "sha256": "09eb69eed2f9464cac9f0a2ac3197f11b0187c1e7e6842a1395dc35999089b71"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/scripts/generate-types.mjs",
+      "path": "scripts/generate-types.mjs",
+      "sha256": "cc0a280e25dba4b9469aac0352d960639088b3974bbc051fbe7d4d78db020ed6"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/Cargo.toml",
+      "path": "src-tauri/Cargo.toml",
+      "sha256": "db8f9a95bd0ae42b52f5d647e88e9cc9127adaa47131600551f204bd12d2e09c"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/build.rs",
+      "path": "src-tauri/build.rs",
+      "sha256": "487059eaf8a947b80f20a9aacac038a5047b2ad69d2401b827376c67d6fe847f"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/capabilities/main-window.json",
+      "path": "src-tauri/capabilities/main-window.json",
+      "sha256": "fce9f30c61172837980f0d5e5c1da5a9cb4604ccb8c6b594308a8ab07643a1f7"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/.editorconfig",
+      "path": "src-tauri/gen/android/.editorconfig",
+      "sha256": "d22b394a5a140050065207d160273570edb04200480160e0951df3291dd7848f"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/.gitignore",
+      "path": "src-tauri/gen/android/.gitignore",
+      "sha256": "2d8a4dfb08ea1403e6eab97bc216158328c01ace4027f0dd3b65b2a088994270"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/.gitignore",
+      "path": "src-tauri/gen/android/app/.gitignore",
+      "sha256": "174bfc72691cfd2146e10c4dc930940ae29af4f9c79b7f3f7d1fe87b32689491"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/build.gradle.kts",
+      "path": "src-tauri/gen/android/app/build.gradle.kts",
+      "sha256": "e08ec96ac8cf46398e48809099948b2f803f2d274ce1af5b2856e076adbd46ae"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/proguard-rules.pro",
+      "path": "src-tauri/gen/android/app/proguard-rules.pro",
+      "sha256": "56fd960cf225f6ca40f982b13a5dbb0d8bc3dfde13ff76422825c6070d0a1890"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/AndroidManifest.xml",
+      "path": "src-tauri/gen/android/app/src/main/AndroidManifest.xml",
+      "sha256": "874aba308f9df8f1a0f9d6ba55079d646dbf7c35c5fc5a5583a825d29347b30d"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/java/com/forgewirelabs/repopact/workbench/MainActivity.kt",
+      "path": "src-tauri/gen/android/app/src/main/java/com/forgewirelabs/repopact/workbench/MainActivity.kt",
+      "sha256": "cf18b4393418eb0c69ff00c0a1e072942588560488d75f2bd53857119a76f1a0"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+      "sha256": "01d1a6a6c1234eb7fe270d097eb283d72b9c95ae5118886f1b6573aad280f1f7"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/drawable/ic_launcher_background.xml",
+      "sha256": "ed423c73a6f40a4d2909f0901e60527b3a807cd59e1b5593bcaae1808b1c6321"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/layout/activity_main.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/layout/activity_main.xml",
+      "sha256": "68466a0a3006f183eb3af4e978d52f50a68087a1aac0880bd16eef3760153bcb"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
+      "sha256": "760d4b8a06bf7163dd010c33ad2cac9e4a75fa0177afaba042f83e311eef0c3e"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+      "sha256": "6f2105edc7b9b21489a34162b5e559ae0d8c63d2813a52caa2e2b0b209d29fe3"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png",
+      "sha256": "88775f04fc84a35f7d25041365663a98903abdecf90460795043d1a9b4188e22"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+      "sha256": "d0ca88297a81352f9d718037bfae60ee81557acbe22808cbc8ae0a046c861037"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+      "sha256": "b601d0e36f41b277bb0a1db256cae00393627df40e82fc8c87381644ab3912b5"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png",
+      "sha256": "7a3e393f648c5cd3d78eb2ffc40d30456d993a675f6e5fd0e1a8d7df910bb9a3"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+      "sha256": "2d92b89f74877fbe690d8753cff57ea2517689947eff22ab1e4ffe9c24a22a72"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+      "sha256": "096e6db0f7f30429957258693971e660f7121d26f4b8aec635e585e138fdf7aa"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png",
+      "sha256": "8486fe051f338fa8c9257798b32b1b9d4d4cbcd0760b899d465c3be6d879fe40"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+      "sha256": "6524bec616fe7939189729a93c6d76d021a9db040b48d1743c1ef74551763ef5"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+      "sha256": "39a28fb0f077bb7daf6e3568b43dc170ad485d67527ece42adff597a4179681b"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+      "sha256": "07cf0c420d3f5c504561228f5b0ba30ce7b36d135d497260259c2a24f128025d"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+      "sha256": "6beedccb2ced888a7243c6ce3eefbb131f9e687c1c19efd154139aaa2d3dbca1"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+      "sha256": "462dfba9a6df09579e3c3d9f4864eecd1399ce428c6d1f9f8eacc036ffad4c9c"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+      "sha256": "bc4851a6b29ee45a7a39cdaabed4ab4f0fdc010f22a243be48112d9bcf7b3ab2"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+      "path": "src-tauri/gen/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+      "sha256": "e7da592583e60ce065c1c5c4c4175d8353d41b8ed8ac900baad895f3f408cc2d"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/values-night/themes.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/values-night/themes.xml",
+      "sha256": "3bcb08d1502d9f070078cd7ab40d6efe9a1bad2b8f0036ddee0538153050f4bb"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/values/colors.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/values/colors.xml",
+      "sha256": "b5626527d503417f0d8e5b1e08f338de7b31173bf0e122815f03e64932adbd88"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/values/ic_launcher_background.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/values/ic_launcher_background.xml",
+      "sha256": "0687336f0ccc6f7ee09c7c95110667c63b75931238df779a21af401fb864cd34"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/values/strings.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/values/strings.xml",
+      "sha256": "c34f18d684dbd550b19fce0508c86973c56cfbcbadce997ec6c4618786e366a7"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/values/themes.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/values/themes.xml",
+      "sha256": "3bcb08d1502d9f070078cd7ab40d6efe9a1bad2b8f0036ddee0538153050f4bb"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/app/src/main/res/xml/file_paths.xml",
+      "path": "src-tauri/gen/android/app/src/main/res/xml/file_paths.xml",
+      "sha256": "cdb4effab9f579e06f0f49d5fde4b3909fc5f03e978c9ba9ce34cf5b9f4b6902"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/build.gradle.kts",
+      "path": "src-tauri/gen/android/build.gradle.kts",
+      "sha256": "f8d6b8ac33de9acbe318595de7be4500fec1009f8ea0edc508fd998cc15294c5"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/buildSrc/build.gradle.kts",
+      "path": "src-tauri/gen/android/buildSrc/build.gradle.kts",
+      "sha256": "11818be939b3aa44d691228f8666fba5efc796cdc1b4fb8072ab7c91bc056eb0"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/buildSrc/src/main/java/com/forgewirelabs/repopact/workbench/kotlin/BuildTask.kt",
+      "path": "src-tauri/gen/android/buildSrc/src/main/java/com/forgewirelabs/repopact/workbench/kotlin/BuildTask.kt",
+      "sha256": "4dab5a7ad55564f032bbb7957c4df48867faa5cfd5e0d6db650b4fcb78d06d58"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/buildSrc/src/main/java/com/forgewirelabs/repopact/workbench/kotlin/RustPlugin.kt",
+      "path": "src-tauri/gen/android/buildSrc/src/main/java/com/forgewirelabs/repopact/workbench/kotlin/RustPlugin.kt",
+      "sha256": "3488450f755ee6ed9eeaaad99e7adcc27de827f98f4657d9a4fb4af47c2f8663"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/gradle.properties",
+      "path": "src-tauri/gen/android/gradle.properties",
+      "sha256": "580de86208e48edae2206e167da024f17794269d296ad46a94d001c6809ba2cb"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/gradle/wrapper/gradle-wrapper.jar",
+      "path": "src-tauri/gen/android/gradle/wrapper/gradle-wrapper.jar",
+      "sha256": "e996d452d2645e70c01c11143ca2d3742734a28da2bf61f25c82bdc288c9e637"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/gradle/wrapper/gradle-wrapper.properties",
+      "path": "src-tauri/gen/android/gradle/wrapper/gradle-wrapper.properties",
+      "sha256": "5f8448f8760a88f7dfa64fad849012828706c6ce8e11041bb0640faa1e230f0e"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/gradlew",
+      "path": "src-tauri/gen/android/gradlew",
+      "sha256": "63135287117a1e6d12c84580f1f49c61d1ba02218ecd28660605e97f976e7d65"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/gradlew.bat",
+      "path": "src-tauri/gen/android/gradlew.bat",
+      "sha256": "c46a27c79007746de5922b17abb6230d64ad8b1ba3ad1585ee5c6543c2a9b129"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/android/settings.gradle",
+      "path": "src-tauri/gen/android/settings.gradle",
+      "sha256": "99856053f245337d20d308dbeaf9cd7250ad0c186ebbb6866ab46a6e7005ee19"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/schemas/acl-manifests.json",
+      "path": "src-tauri/gen/schemas/acl-manifests.json",
+      "sha256": "2d0dabe79c867310f8c0eaadc9096bf9d80757820baffaa190a4548c8dfc06a4"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/schemas/android-schema.json",
+      "path": "src-tauri/gen/schemas/android-schema.json",
+      "sha256": "deb8465c5c765c24fe768369d57a00d7d9937ee0ebc18a2057c3d5b71850f7b5"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/schemas/capabilities.json",
+      "path": "src-tauri/gen/schemas/capabilities.json",
+      "sha256": "6c5ccb97e2745c03741c22e03609295fe276c091bb31886179da1a7a30059ebc"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/schemas/desktop-schema.json",
+      "path": "src-tauri/gen/schemas/desktop-schema.json",
+      "sha256": "deb8465c5c765c24fe768369d57a00d7d9937ee0ebc18a2057c3d5b71850f7b5"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/schemas/mobile-schema.json",
+      "path": "src-tauri/gen/schemas/mobile-schema.json",
+      "sha256": "deb8465c5c765c24fe768369d57a00d7d9937ee0ebc18a2057c3d5b71850f7b5"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/gen/schemas/windows-schema.json",
+      "path": "src-tauri/gen/schemas/windows-schema.json",
+      "sha256": "deb8465c5c765c24fe768369d57a00d7d9937ee0ebc18a2057c3d5b71850f7b5"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/128x128.png",
+      "path": "src-tauri/icons/128x128.png",
+      "sha256": "397ab6cf6d447fe1f5fe1a23cac80eb71d4d73f359da9150c74efe9093fbb437"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/128x128@2x.png",
+      "path": "src-tauri/icons/128x128@2x.png",
+      "sha256": "57db36bcf7b1c27d11aee42624f130ea8209a76b5f1f9d03cf2a7602cb162aca"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/32x32.png",
+      "path": "src-tauri/icons/32x32.png",
+      "sha256": "d7414088bd3f51c6d709bb9dc5eb14e90962b081fb31e0219b65ce49c5520179"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/64x64.png",
+      "path": "src-tauri/icons/64x64.png",
+      "sha256": "50166bcd2bcb77b668c460161923d5fb931f6affd5ea6cd873b57f8d997f8120"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/Square107x107Logo.png",
+      "path": "src-tauri/icons/Square107x107Logo.png",
+      "sha256": "e4f0a0cc33b908931b306d3aea4fc3a4f7a5948d0a36c997cd5df13c092c078f"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/Square142x142Logo.png",
+      "path": "src-tauri/icons/Square142x142Logo.png",
+      "sha256": "08f488e7bd8e75918b1978025efd277ed94cdf8062fcc0a3519c3f1dc21e8a31"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/Square150x150Logo.png",
+      "path": "src-tauri/icons/Square150x150Logo.png",
+      "sha256": "8d1d5939d1b22b88c5a650881bc987aa948a4ab39dea8f2e1ec3f086913dbeb7"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/Square284x284Logo.png",
+      "path": "src-tauri/icons/Square284x284Logo.png",
+      "sha256": "447b1520ed9c8526ab3b5d7673cde79f499692e081c2b720bc51312cb8ee101e"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/Square30x30Logo.png",
+      "path": "src-tauri/icons/Square30x30Logo.png",
+      "sha256": "b64289ef702f70a065ed895bd863d303f6b27a89962886284101a23fd22af5bf"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/Square310x310Logo.png",
+      "path": "src-tauri/icons/Square310x310Logo.png",
+      "sha256": "1c92afd12df621b7c7b448a325bb3369cc61c19624fc2516f97cb675468e9928"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/Square44x44Logo.png",
+      "path": "src-tauri/icons/Square44x44Logo.png",
+      "sha256": "d796f86672145038a01f6d5dfa6a425b884fbd743033db49efbfcdecf6270883"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/Square71x71Logo.png",
+      "path": "src-tauri/icons/Square71x71Logo.png",
+      "sha256": "a6b7e56f1e2cabe6de782b869e7001d200aa546941be4b690dd27bd26740062b"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/Square89x89Logo.png",
+      "path": "src-tauri/icons/Square89x89Logo.png",
+      "sha256": "142a0cd750844be318ad5d6ef150ccf69653157af81bb622a15675ee6099482f"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/StoreLogo.png",
+      "path": "src-tauri/icons/StoreLogo.png",
+      "sha256": "fb1e6445bd69f470d9f023bbf4a4342614c4b8e46bec19309e089a1416eb7019"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/app-icon-source.png",
+      "path": "src-tauri/icons/app-icon-source.png",
+      "sha256": "6083f3639218550f9940a438ca446c94170897df7a31744f2b7610caffdd3488"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/icon.icns",
+      "path": "src-tauri/icons/icon.icns",
+      "sha256": "46277e4aec7b8f754f1f2a16429c898008b0f3bcaaf466f71379523c39f8d54d"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/icon.ico",
+      "path": "src-tauri/icons/icon.ico",
+      "sha256": "e2ed36fec3519f6ccd45967ac2473531ef0722d463465eb4c67dc0ba91ac211a"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/icon.png",
+      "path": "src-tauri/icons/icon.png",
+      "sha256": "a85955cffd14ff798cdf49cd2c4f641b64241f332c746ea6c4604741340cfd81"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-20x20@1x.png",
+      "path": "src-tauri/icons/ios/AppIcon-20x20@1x.png",
+      "sha256": "fb8d7efd894ea3c2fdbdf826c2fc233a05bb7b46dcc14d2027260a773d407001"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-20x20@2x-1.png",
+      "path": "src-tauri/icons/ios/AppIcon-20x20@2x-1.png",
+      "sha256": "8dce0556008228825e67463b0611f86db51c92aae611fb1b50562ded06f118d3"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-20x20@2x.png",
+      "path": "src-tauri/icons/ios/AppIcon-20x20@2x.png",
+      "sha256": "8dce0556008228825e67463b0611f86db51c92aae611fb1b50562ded06f118d3"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-20x20@3x.png",
+      "path": "src-tauri/icons/ios/AppIcon-20x20@3x.png",
+      "sha256": "eb1f97ae33f42f16b8539f1886a5df5b1c68e2a3aac619b49266060f37d8e9d0"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-29x29@1x.png",
+      "path": "src-tauri/icons/ios/AppIcon-29x29@1x.png",
+      "sha256": "37bc726232e120c333b4fb0acd3dc7f0a23f56b9d7862c5e46d69afc18aa0add"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-29x29@2x-1.png",
+      "path": "src-tauri/icons/ios/AppIcon-29x29@2x-1.png",
+      "sha256": "68f8b411e5da3e70555e784f9982f998abe14309ce5f0d4dd72a5af80965b10f"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-29x29@2x.png",
+      "path": "src-tauri/icons/ios/AppIcon-29x29@2x.png",
+      "sha256": "68f8b411e5da3e70555e784f9982f998abe14309ce5f0d4dd72a5af80965b10f"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-29x29@3x.png",
+      "path": "src-tauri/icons/ios/AppIcon-29x29@3x.png",
+      "sha256": "d4e8df6c20ccd48279608c2a228daa2ea0b5fe0b78657554cbc879337925dc65"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-40x40@1x.png",
+      "path": "src-tauri/icons/ios/AppIcon-40x40@1x.png",
+      "sha256": "8dce0556008228825e67463b0611f86db51c92aae611fb1b50562ded06f118d3"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-40x40@2x-1.png",
+      "path": "src-tauri/icons/ios/AppIcon-40x40@2x-1.png",
+      "sha256": "f2121d06905ebce8f5c797b00146b9c737a875822be0818fa861cf71fb804bd7"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-40x40@2x.png",
+      "path": "src-tauri/icons/ios/AppIcon-40x40@2x.png",
+      "sha256": "f2121d06905ebce8f5c797b00146b9c737a875822be0818fa861cf71fb804bd7"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-40x40@3x.png",
+      "path": "src-tauri/icons/ios/AppIcon-40x40@3x.png",
+      "sha256": "2ad5db1779d2a1fcb510cd973879ba17d20d8604007febfd02117846e5be2413"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-512@2x.png",
+      "path": "src-tauri/icons/ios/AppIcon-512@2x.png",
+      "sha256": "82d6887225e2ba3ed6aa362166e02b8edcb49c4feced6c5b7692fed4d4ae2901"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-60x60@2x.png",
+      "path": "src-tauri/icons/ios/AppIcon-60x60@2x.png",
+      "sha256": "2ad5db1779d2a1fcb510cd973879ba17d20d8604007febfd02117846e5be2413"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-60x60@3x.png",
+      "path": "src-tauri/icons/ios/AppIcon-60x60@3x.png",
+      "sha256": "bcb9ba050cdf690156f8f607069507fab7552b56288969038425dec55b587de9"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-76x76@1x.png",
+      "path": "src-tauri/icons/ios/AppIcon-76x76@1x.png",
+      "sha256": "263847a95f0f14dd94d2f5d9d83bc73b5fef32463913b2e324fd99dcfe56c33e"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-76x76@2x.png",
+      "path": "src-tauri/icons/ios/AppIcon-76x76@2x.png",
+      "sha256": "d5d7f815f29819bead57b402c0c35ff65bb9b45ec12b9a4557350a7b043818c3"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/icons/ios/AppIcon-83.5x83.5@2x.png",
+      "path": "src-tauri/icons/ios/AppIcon-83.5x83.5@2x.png",
+      "sha256": "95e7d5fa16af7a18a102a7c16c300cbde86bc9e200e8899bacb60d64514c8889"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/permissions/workbench.toml",
+      "path": "src-tauri/permissions/workbench.toml",
+      "sha256": "7803b391d2d67d2a6adcad08ec5dbebeed3827f5cfa1a21bd9a27954f2e9fdb3"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/src/android_validation.rs",
+      "path": "src-tauri/src/android_validation.rs",
+      "sha256": "d86f0409188c71184a2cddcc94ff12c1973f1dbba1efd42029711d317dc9f971"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/src/github_app_registration.rs",
+      "path": "src-tauri/src/github_app_registration.rs",
+      "sha256": "e3fbb62c464c2d2fd03f8db3a87e826b88935795c6a7b077d00ca9944855c3b4"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/src/lib.rs",
+      "path": "src-tauri/src/lib.rs",
+      "sha256": "9034d3f5eca0af3df519f0af80d2a92cb63484a3627b7d035dfc4a373ded81a8"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/src/main.rs",
+      "path": "src-tauri/src/main.rs",
+      "sha256": "a3a5d5f7cbb93d760bc7da71d1d8f9e120a2c66d4ba639df58a0e60a8061019e"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/src/mobile_acquisition.rs",
+      "path": "src-tauri/src/mobile_acquisition.rs",
+      "sha256": "67fc570e9fb380ff0e1603603e068d8b47bef23657251d9e80a8134d9eb745fe"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/src/remote_provider.rs",
+      "path": "src-tauri/src/remote_provider.rs",
+      "sha256": "b2c0422e68802c717e27a1b2dec122d25ebe5baba51892b9a7af3e0fbd0edc7d"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/tauri.conf.json",
+      "path": "src-tauri/tauri.conf.json",
+      "sha256": "e0e9296d1f7ea3132c465fe06c51b72071adead42621d697dc8b51e51624d407"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src-tauri/windows/nsis-hooks.nsh",
+      "path": "src-tauri/windows/nsis-hooks.nsh",
+      "sha256": "307fb7daefb2dc04ce564ed736de514935b701012e29498e887f54f9d79a65ec"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/App.test.tsx",
+      "path": "src/App.test.tsx",
+      "sha256": "07a4d85e8e95a705a3d26f9ef6539ae76c819434914b0135195a2311d5743c8a"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/App.tsx",
+      "path": "src/App.tsx",
+      "sha256": "fd0bc3181fb6bf888c34be6e0098fb2ab2e11e3a5d57aaa5f21c9987bb39133f"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/GraphOperatorMap.test.tsx",
+      "path": "src/GraphOperatorMap.test.tsx",
+      "sha256": "774ccb19f111cfd6feb778779f4499999688104002de7fbebe28152746f95533"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/GraphOperatorMap.tsx",
+      "path": "src/GraphOperatorMap.tsx",
+      "sha256": "364f75caef5b3615d8fc9fc7cac7fcd44ec51f0f7e6f29f44df38632364baa61"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/MobileAcquisitionPanel.tsx",
+      "path": "src/MobileAcquisitionPanel.tsx",
+      "sha256": "f198100b2418b2f7be7200fca0929c824f461a1d2c9d4530e392293d57414ad8"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/RemoteRepositoryPanel.tsx",
+      "path": "src/RemoteRepositoryPanel.tsx",
+      "sha256": "d2c2c1a887bcc6c70227a22083212d466a9aab48bda472dde5df96edf41de436"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/back-navigation.test.ts",
+      "path": "src/back-navigation.test.ts",
+      "sha256": "32c84c55a9c3865f5b4c9b1b286bd0c263b045340e38108599fdeca6bd273b96"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/frontend-boundary.test.ts",
+      "path": "src/frontend-boundary.test.ts",
+      "sha256": "11845fb919b9265213ab2be733515694516299c0f40d33a006a4c5851b3e774b"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/generate-types-script.test.ts",
+      "path": "src/generate-types-script.test.ts",
+      "sha256": "fe6a4b94ab349002b8d33cfa9b4286d28ef81014c0b7e937b780e9d4d96cd828"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/generated/types.ts",
+      "path": "src/generated/types.ts",
+      "sha256": "d2bf70c145cb631752c58d4a5a59c9002775bf6f2f5f243c19289ed2d86b3fa0"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/ia.test.tsx",
+      "path": "src/ia.test.tsx",
+      "sha256": "2b9115663b395a9da9d2e805dc9a73b90e75137b0f34d8fe029e9333ef16724e"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/lib/api.ts",
+      "path": "src/lib/api.ts",
+      "sha256": "7f15e050b428ae55a486e4d7bf0e11840a8b6228d1b6ad14d709a4388e81534a"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/lib/mobile-api.ts",
+      "path": "src/lib/mobile-api.ts",
+      "sha256": "cebc1d4e63343f53853b5453bbe1757b6274147a6d5cf6886a90bae300378d11"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/lib/mobile-types.ts",
+      "path": "src/lib/mobile-types.ts",
+      "sha256": "7029afec2abcb0e9fd2e4083af1801fa01cd1e3550059f5e531d06e4077dfae8"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/lib/remote-api.ts",
+      "path": "src/lib/remote-api.ts",
+      "sha256": "93b2c277321cb7175d97024d989e0217d50589df671f47dcd4c0532578ac0e93"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/lib/remote-types.ts",
+      "path": "src/lib/remote-types.ts",
+      "sha256": "47285aee30414daa7d6fea800535bd6e0f883a324c872a9ea192afae0d959745"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/main.tsx",
+      "path": "src/main.tsx",
+      "sha256": "41431cb94a112ca05f90ca6037229d09d4bb8ecc1c27ae3bb3740ace8f01d2a6"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/remote-frontend-boundary.test.ts",
+      "path": "src/remote-frontend-boundary.test.ts",
+      "sha256": "5cc965a85f6aab9b27221f0c17c9512615a5a6f63efd90f63e95d04e2349d5ab"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/styles.css",
+      "path": "src/styles.css",
+      "sha256": "2f45f3096511ac211045941b85b0de16642bbff3707299e6062eb9f6360aba39"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/tauri-security.test.ts",
+      "path": "src/tauri-security.test.ts",
+      "sha256": "2ede9cb2b83252856599502da767669ab4387ac393f987aa54be4c407c97981f"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/src/test/setup.ts",
+      "path": "src/test/setup.ts",
+      "sha256": "9b328c4843431fa76d8de00008fc159e95f99a840211085ff3b8f25e53d14409"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/tsconfig.json",
+      "path": "tsconfig.json",
+      "sha256": "e9fbbccd14e9fa606d35a1e39a947f668ceb3b66939073811a10db7713af203e"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/vite.config.ts",
+      "path": "vite.config.ts",
+      "sha256": "ca0eb30c3ba7f14e00bdc87de55a1e36ca434bf9e98c8b6108ae28b8e4cfbbe0"
+    },
+    {
+      "source_path": "rust/apps/repopact-desktop/vitest.config.ts",
+      "path": "vitest.config.ts",
+      "sha256": "e57a6716884608294d923d628353c9975e4199a4f8204c58d220d16e1fcd4755"
+    },
+    {
+      "source_path": "work/README.md",
+      "path": "work/README.md",
+      "sha256": "98d2e326bff134caf44193ed78b87fcdc8c5191d644071e4129035d2f5299797"
+    }
+  ],
+  "withheld": [
+    {
+      "reason": "contains machine-specific absolute paths; original retained in RepoPact governance ledger",
+      "path": "evidence/WI074-S3-EXTRACTION-MANIFEST.json"
+    },
+    {
+      "reason": "S3 local-checkout extraction helper; not a portable Workbench release tool",
+      "path": "scripts/create-s3-extraction-manifest.mjs"
+    }
+  ],
+  "hash_basis": "SHA-256 of committed Git blob bytes at the publication tree HEAD; the provenance manifest itself is excluded to avoid self-reference."
+}

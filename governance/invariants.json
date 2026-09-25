@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "invariants": [
+    {
+      "id": "WB-INV-1",
+      "statement": "RepoPact Core is the sole authority for governance semantics, validation, graph, analysis, mutation, and headless engine behavior.",
+      "enforcement": "All Core dependencies use one full Git SHA; no copied Core source or parallel semantic implementation is permitted."
+    },
+    {
+      "id": "WB-INV-2",
+      "statement": "Repository-local and offline operation remains available; remote-provider authentication is optional.",
+      "enforcement": "Feature and integration tests exercise local repository workflows without network credentials."
+    },
+    {
+      "id": "WB-INV-3",
+      "statement": "Secrets stay inside platform-managed credential facilities and do not enter UI bundles, logs, evidence, or artifacts.",
+      "enforcement": "Security tests and artifact inspection cover secret-bearing surfaces."
+    },
+    {
+      "id": "WB-INV-4",
+      "statement": "Security assurance and platform support claims require evidence for the exact target and boundary.",
+      "enforcement": "S3 evidence records tested targets and distinguishes untested or unsupported platforms."
+    }
+  ]
+}

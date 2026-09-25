@@ -1,0 +1,39 @@
+[workspace]
+resolver = "2"
+members = [
+    "rust/crates/repopact-desktop-api",
+    "rust/crates/repopact-mobile-acquisition",
+    "rust/crates/repopact-mobile-saf",
+    "rust/crates/repopact-mobile-credential",
+    "rust/crates/repopact-remote-provider",
+    "rust/crates/repopact-provider-github",
+    "src-tauri",
+]
+
+[workspace.dependencies]
+# Every direct Core crate is pinned to the same immutable published Core commit.
+repopact-analysis = { git = "https://github.com/ForgeWireLabs/repopact-core", rev = "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a" }
+repopact-core = { git = "https://github.com/ForgeWireLabs/repopact-core", rev = "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a" }
+repopact-graph = { git = "https://github.com/ForgeWireLabs/repopact-core", rev = "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a" }
+repopact-mutation = { git = "https://github.com/ForgeWireLabs/repopact-core", rev = "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a" }
+repopact-repository = { git = "https://github.com/ForgeWireLabs/repopact-core", rev = "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a" }
+repopact-schema = { git = "https://github.com/ForgeWireLabs/repopact-core", rev = "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a" }
+repopact-types = { git = "https://github.com/ForgeWireLabs/repopact-core", rev = "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a" }
+repopact-validation = { git = "https://github.com/ForgeWireLabs/repopact-core", rev = "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a" }
+
+# Workbench-owned domain/application crates remain workspace path dependencies.
+repopact-desktop-api = { path = "rust/crates/repopact-desktop-api" }
+repopact-mobile-acquisition = { path = "rust/crates/repopact-mobile-acquisition" }
+repopact-mobile-saf = { path = "rust/crates/repopact-mobile-saf" }
+repopact-mobile-credential = { path = "rust/crates/repopact-mobile-credential" }
+repopact-remote-provider = { path = "rust/crates/repopact-remote-provider" }
+repopact-provider-github = { path = "rust/crates/repopact-provider-github" }
+
+regex = { version = "1", default-features = false, features = ["std", "unicode-perl"] }
+reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls", "json"] }
+keyring = { version = "3", default-features = false, features = ["windows-native", "apple-native", "sync-secret-service"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", features = ["preserve_order"] }
+sha2 = "0.10"
+rand = "0.10"
+base64 = "0.22"

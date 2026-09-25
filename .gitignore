@@ -1,0 +1,9 @@
+/target/
+/node_modules/
+/dist/
+**/build/
+**/.gradle/
+/src-tauri/target/
+/src-tauri/gen/schemas/
+/src-tauri/gen/android/local.properties
+*.log
