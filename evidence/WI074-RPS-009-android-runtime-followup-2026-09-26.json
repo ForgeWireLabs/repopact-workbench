@@ -1,0 +1,50 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-009-android-runtime-followup-2026-09-26",
+  "work_item": "WI074",
+  "requirement": "RPS-009",
+  "recorded_at": "2026-09-26T06:50:46Z",
+  "baseline_commit": "7c2c9500d58387b5afbcba6d1c3e96e102b7b72a",
+  "implementation_commit": "19b63257808eed269e31156811568b80c5073353",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a",
+  "result": "Android runtime and Windows native-launch checks passed; overall criterion remains pending",
+  "checks": [
+    {
+      "platform": "Android API 35 x86_64 emulator",
+      "command": "Build and install the debug APK; use Android SAF to acquire a clean Core repository; open it through the Workbench UI; validate and query the Core-backed graph",
+      "result": "passed",
+      "artifacts": [
+        {
+          "path": "src-tauri/gen/android/app/build/outputs/apk/universal/debug/app-universal-debug.apk",
+          "bytes": 283074305,
+          "sha256": "04CD48516AA0FE93CE4B220E81CA923524CBDE5A2CBEE42BA8AF7CF200D45B61"
+        },
+        {
+          "path": "src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release-unsigned.apk",
+          "bytes": 26988162,
+          "sha256": "D02EEE2A6DD24FFBD4953B9FE83370F75EB1A16003D326C8FF040913DA033197"
+        },
+        {
+          "path": "evidence/artifacts/WI074-RPS-009-013-2026-09-26/android-dashboard.png",
+          "sha256": "5A931CC0174B5B05772DD9174B6CB66CAC89B470260F6229DA53608F1EB2BB4F"
+        },
+        {
+          "path": "evidence/artifacts/WI074-RPS-009-013-2026-09-26/android-saf-grant.png",
+          "sha256": "83C86B7C4C38CE65E6F2A42E2549412B975A5C8141016C094F9351E45DF08477"
+        }
+      ],
+      "details": "A real SAF-granted repository workspace opened into the Workbench Android application session. Canonical Core validation returned valid=true with zero errors and zero warnings. The repository contained 75 work items, 178 evidence runs, 75 decisions, 9,741 graph nodes and 11,845 graph edges; its recursive watcher was running. The typed graph search returned 50 nodes with status basis working_overlay. The APK archive contains no Python interpreter, pip executable or libpython entry; no Python or pip process was observed on the emulator during the runtime session. The normal release APK was built unsigned for artifact inspection and was not installed.",
+      "limitation": "This proves the Android half of RPS-009 only. Existing Windows 11 evidence records a native executable launch with Python/pip excluded from PATH and no Python child process, but repository navigation and interactive UI proof were not captured because the UI capture helper failed with SetIsBorderRequired (0x80004002). Do not treat that earlier process-only check as complete desktop acceptance. Windows 10/11 and Linux distribution/version runs are intentional separate matrix entries, not version mismatches."
+    },
+    {
+      "platform": "Windows 10 Pro x64, version 10.0.19045, build 19045",
+      "command": "Launch the native Workbench executable with PATH restricted to C:\\Windows\\System32 and APPDATA, LOCALAPPDATA, TEMP, TMP and WebView2 data redirected to a fresh task-only profile; inspect the process tree and window handle",
+      "result": "native GUI process launched; no Python or pip dependency observed",
+      "details": "The process window title was RepoPact Workbench with a nonzero window handle. Its only child process was msedgewebview2.exe; no python.exe or pip process was a child. The executable SHA-256 was E31628F830CD9A10A82B17F8EDBD73E45A37B680819133CD3595F51ABAC48D7F. The desktop binary predates the Android-only command-gating commit; that commit changes no Windows code path.",
+      "limitation": "The repository picker and interactive desktop repository session were not exercised. The prior UI capture helper failure was not retried; operator-assisted desktop interaction remains the final RPS-009 gate."
+    }
+  ],
+  "acceptance": "pending",
+  "reason": "The native desktop and Android runtimes launch without Python/pip, but operator-assisted desktop repository interaction remains incomplete; no RPS-009 acceptance-state change is claimed."
+}
