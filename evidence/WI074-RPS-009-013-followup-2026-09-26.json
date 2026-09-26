@@ -1,0 +1,35 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-009-runtime-prerequisite-review-2026-09-26",
+  "work_item": "WI074",
+  "requirement": "RPS-009",
+  "recorded_at": "2026-09-26T02:50:37Z",
+  "baseline_commit": "a1876b08b78f169a79597ec3099d9840ace55e06",
+  "implementation_commit": "94ac6fd6f5c4500d82a6dc09186fe8c13bd93cef",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a",
+  "result": "partial; acceptance remains pending",
+  "checks": [
+    {
+      "platform": "Windows 11 x64",
+      "command": "Verify published Workbench HEAD, inspect isolated native build outputs and running processes, enumerate available targetable apps",
+      "result": "blocked before interactive test",
+      "details": "Published HEAD is 94ac6fd6f5c4500d82a6dc09186fe8c13bd93cef. The earlier process-only launch evidence remains valid: the app ran with Python/pip unavailable on PATH and no Python child was observed. The built executable is no longer present in the isolated Workbench tree or its task build-output location, no Workbench app is installed or running, and no interactive repository operation could be exercised in this recovery run.",
+      "limitation": "The prior UI capture failed with SetIsBorderRequired: No such interface supported (0x80004002). That helper was not retried. With only 1.91 GB free on the local NTFS volume, a native rebuild was deferred rather than risking disk exhaustion. The other visible volume is Google Drive/FAT32 and was not used."
+    },
+    {
+      "platform": "Android API 35 x86_64",
+      "command": "Verify existing APK hash, inspect isolated AVD partition configuration, query adb devices -l, and inspect local-volume capacity",
+      "result": "blocked before runtime test",
+      "artifact": {
+        "path": "src-tauri/gen/android/app/build/outputs/apk/universal/debug/app-universal-debug.apk",
+        "bytes": 57005915,
+        "sha256": "A6AC7A3F9DE7F467E32EEA141DF830E0973506ABEF43AA1C732D9C98B6A27AA4"
+      },
+      "details": "The previously built debug APK hash matches. No adb device is attached. The isolated AVD is configured for a 6 GiB userdata partition; its prior emulator startup reported 7372.80 MB required free space. The only suitable local volume currently has 1.91 GB free. No APK installation, acquisition, session initialization or Core-backed Android operation was attempted.",
+      "limitation": "The Google Drive/FAT32 volume is unsuitable for AVD storage. No new Android build was started before a usable local runtime location existed."
+    }
+  ],
+  "acceptance": "pending",
+  "reason": "Windows repository selection/navigation and Core-backed UI operations remain unproven; Android runtime acceptance remains blocked by unavailable local storage and no attached disposable device. Earlier process startup and APK compilation are not treated as runtime acceptance."
+}

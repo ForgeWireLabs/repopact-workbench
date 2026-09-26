@@ -1,0 +1,37 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-013-credential-security-followup-2026-09-26",
+  "work_item": "WI074",
+  "requirement": "RPS-013",
+  "recorded_at": "2026-09-26T02:50:37Z",
+  "baseline_commit": "a1876b08b78f169a79597ec3099d9840ace55e06",
+  "implementation_commit": "94ac6fd6f5c4500d82a6dc09186fe8c13bd93cef",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "e15fbcfa4a29e1e6df7339bfed56c15c19185f9a",
+  "result": "partial; acceptance remains pending",
+  "checks": [
+    {
+      "platform": "Windows 11 x64 and Debian under WSL2 x86_64",
+      "command": "Reuse immutable WI074 RPS-013 evidence at Workbench implementation commit 9894b03eb77bc70bdee2aebcbc712de307c254a6; verify no source or dependency changes through published commit 94ac6fd6f5c4500d82a6dc09186fe8c13bd93cef",
+      "result": "previous focused credential-store and provider tests remain applicable",
+      "details": "The existing evidence records Windows native credential-store round-trip, overwrite, missing-entry, distinct credential kind, deletion and redaction/canary tests as passing; isolated Linux Secret Service synthetic write/read/delete and the full Workbench suite also passed. The application code and Core pin have not changed since those tests. No production credentials were used."
+    },
+    {
+      "platform": "Android API 35 x86_64",
+      "command": "Inspect existing debug APK provenance and source feature gates; assess availability of a normal release artifact and Android runtime",
+      "result": "static gate confirmed; runtime and release-artifact proof incomplete",
+      "details": "The retained debug APK has SHA-256 A6AC7A3F9DE7F467E32EEA141DF830E0973506ABEF43AA1C732D9C98B6A27AA4 and intentionally includes the debug credential-validation surface. Source registration is guarded by both debug_assertions and the android-debug-validation feature. No normal production APK is available for artifact inspection, and no Android Keystore operation was run because there is no attached device or adequately provisioned local AVD volume.",
+      "limitation": "Source-level cfg is not substituted for checking a built production artifact. Credential creation, read/overwrite, identity separation, missing/revoked access, deletion, permission errors and cleanup remain unverified on Android."
+    },
+    {
+      "platform": "Workbench frontend and native artifacts",
+      "scanner": "Gitleaks 8.30.1",
+      "command": "Reuse prior redacted scans of the Workbench tree, APK text/resources and frontend production bundle; no product files changed after those scans",
+      "result": "0 findings in the previously scanned tree, APK text/resources and bundle",
+      "limitation": "This recovery adds evidence only; its outgoing commit and final tree will be scanned before publication."
+    }
+  ],
+  "security_boundary": "No live GitHub authentication, production credential, or paid service was used. Existing Windows/Linux results are reused from immutable evidence; no synthetic Android credential was created.",
+  "acceptance": "pending",
+  "reason": "Android Keystore runtime proof, production-artifact exclusion proof for the debug-only command surface, and complete interactive cross-boundary application behavior are not yet demonstrated."
+}
