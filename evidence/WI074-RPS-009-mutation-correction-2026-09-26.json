@@ -1,0 +1,30 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-009-mutation-correction-2026-09-26",
+  "work_item": "WI074",
+  "requirement": "RPS-009",
+  "recorded_at": "2026-09-26T22:04:40Z",
+  "baseline_commit": "c2730ec8d5a6055aef6597f004fb7b47b24be1c2",
+  "implementation_commit": "e6d302fbbafea7fb4d0ad825908967eece01aa0e",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "1c1f32ae619e8135227acfa87393696ff608951c",
+  "result": "partial; acceptance remains pending",
+  "checks": [
+    {
+      "platform": "Windows 11 x64",
+      "command": "cargo build --locked --package repopact-desktop; cargo test --workspace --all-targets --locked; npm test -- --run; npm run typecheck; npm run build; npm run types:check",
+      "result": "passed; 245 tests passed, 10 ignored, 0 failed",
+      "details": "The native Workbench executable was built and launched with APPDATA, LOCALAPPDATA, TEMP, and TMP directed to a fresh task-only profile. Its window was responsive. The process tree contained the Workbench executable and WebView2 processes; no Python or pip process was present. Frontend tests passed 34/34 across 8 files, TypeScript checking passed, the production frontend build passed, and generated Rust-to-TypeScript bindings matched the checked-in file. The desktop API session-switch invalidation and self-applied mutation/post-apply graph refresh tests passed.",
+      "limitation": "Interactive repository selection, plan applicability review, mutation application, and switching between the two corrected-Core repositories were not exercised. Both screenshot-capture attempts failed with `SetIsBorderRequired: No such interface supported (0x80004002)`, including the required recovery retry. Process launch and responsiveness are not treated as UI acceptance. The older acceptance fixtures and screenshots were not modified."
+    },
+    {
+      "platform": "Android API 35 x86_64 emulator",
+      "command": "Refer to existing wi074-rps-009-android-runtime-followup-2026-09-26 evidence",
+      "result": "prior Android runtime evidence remains valid for its recorded baseline only",
+      "details": "The existing record demonstrates Android SAF acquisition, Core-backed validation and graph query without Python/pip at runtime.",
+      "limitation": "That run used Core revision e15fbcfa4a29e1e6df7339bfed56c15c19185f9a, not the corrected pin in this implementation. It was not counted as revalidation of the current Workbench/Core pairing."
+    }
+  ],
+  "acceptance": "pending",
+  "reason": "The Android runtime proof has not been repeated against the corrected Core revision, and the required desktop interaction could not be observed after the Windows capture helper failed twice."
+}

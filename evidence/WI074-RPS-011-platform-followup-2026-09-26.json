@@ -1,0 +1,40 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-011-platform-followup-2026-09-26",
+  "work_item": "WI074",
+  "requirement": "RPS-011",
+  "recorded_at": "2026-09-26T22:04:40Z",
+  "baseline_commit": "c2730ec8d5a6055aef6597f004fb7b47b24be1c2",
+  "implementation_commit": "e6d302fbbafea7fb4d0ad825908967eece01aa0e",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "1c1f32ae619e8135227acfa87393696ff608951c",
+  "result": "partial; acceptance remains pending",
+  "checks": [
+    {
+      "platform": "Windows 11 x64",
+      "command": "cargo test --workspace --all-targets --locked; cargo build --locked --package repopact-desktop",
+      "result": "passed; 245 tests passed, 10 ignored, 0 failed",
+      "details": "The full native Rust workspace suite passed, including the Windows OS credential-store round trips, session-switch invalidation, and post-apply mutation behavior. The Workbench desktop executable built successfully."
+    },
+    {
+      "platform": "Debian GNU/Linux 13 (trixie), WSL2",
+      "command": "Within an isolated dbus-run-session, verify Secret Service put/read/delete with a disposable GNOME Keyring; cargo test -p repopact-remote-provider --locked credential_os::tests -- --test-threads=1; cargo test --workspace --all-targets --locked",
+      "result": "passed; Secret Service probe passed; focused credential-store tests 5 passed and 3 ignored; full suite 245 passed, 10 ignored, 0 failed",
+      "details": "The keyring used isolated XDG data/config/runtime directories and a randomly generated disposable unlock password. No production credentials were used. The full Linux-native Rust workspace suite passed. The disposable keyring and Linux build directory were removed after testing."
+    },
+    {
+      "platform": "Android API 35 x86_64 emulator",
+      "command": "Refer to existing wi074-rps-009-android-runtime-followup-2026-09-26 evidence",
+      "result": "prior runtime evidence is not counted for the corrected Core pin",
+      "limitation": "The existing Android runtime proof used Core e15fbcfa4a29e1e6df7339bfed56c15c19185f9a; this run used 1c1f32ae619e8135227acfa87393696ff608951c. Android was not rebuilt or rerun against the new pin. macOS and iOS remain untested and are not claimed."
+    },
+    {
+      "platform": "Windows 11 x64 security review",
+      "command": "Gitleaks 8.30.1 redacted scan of all reachable repository history and the complete working tree",
+      "result": "passed; zero findings in history and working tree",
+      "details": "The histories scanned were seven commits; the final-tree scan covered about 98.6 MB. Reports were redacted and kept outside the repository."
+    }
+  ],
+  "acceptance": "pending",
+  "reason": "Native Windows and Linux test gates pass, but the current Android runtime has not been verified against the corrected Core dependency revision. RPS-011 is therefore not marked satisfied."
+}
