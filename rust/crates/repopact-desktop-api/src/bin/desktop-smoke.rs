@@ -34,6 +34,7 @@ fn main() {
             depends_on: Vec::new(),
             provenance: "concrete".to_owned(),
             acceptance_criteria: Vec::new(),
+            preflight_confirmed_before_work_started: true,
         }))
         .expect("make create plan");
     assert!(create_plan.applicable, "create plan should be applicable");
@@ -128,6 +129,7 @@ fn main() {
             depends_on: Vec::new(),
             provenance: "concrete".to_owned(),
             acceptance_criteria: Vec::new(),
+            preflight_confirmed_before_work_started: true,
         }))
         .expect("make second plan");
     service

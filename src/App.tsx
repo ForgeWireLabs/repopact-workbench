@@ -648,13 +648,70 @@ function CreateForm({ onCancel, onPlan }: { onCancel: () => void; onPlan: (inten
   const [owner, setOwner] = useState("governance");
   const [status, setStatus] = useState("proposed");
   const [criteria, setCriteria] = useState("");
+  const [preflightConfirmed, setPreflightConfirmed] = useState(false);
   const criterionValues = criteria.split("\n").map((text) => text.trim()).filter(Boolean);
-  const intent: MutationIntent = { kind: "create_work_item", payload: { title, status, date: today(), owner_scope: owner, affected_scopes: [], depends_on: [], provenance: "concrete", acceptance_criteria: criterionValues.map((text, index) => ({ id: `AC-${String(index + 1).padStart(2, "0")}`, text, state: "pending", evidence: [], provenance: "concrete" })) } };
-  return <div><div className="panel-heading"><div><p className="eyebrow">GUIDED CREATE · STEP {step + 1} OF 3</p><h3>New work item</h3></div><button className="quiet-button" onClick={onCancel}>Cancel</button></div>{step === 0 && <div className="form-card"><label>Title<input autoFocus value={title} onChange={(event) => setTitle(event.target.value)} placeholder="What needs to be governed?" /></label><label>Owner scope<input value={owner} onChange={(event) => setOwner(event.target.value)} /></label><label>Initial status<select value={status} onChange={(event) => setStatus(event.target.value)}>{LIFECYCLE_STATUSES.map((value) => <option key={value}>{value}</option>)}</select></label><button className="primary-button" disabled={!title.trim()} onClick={() => setStep(1)}>Continue to guidance</button></div>}{step === 1 && <div className="form-card"><div className="guidance-card"><p className="eyebrow">EPHEMERAL GUIDANCE</p><h4>What will prove completion?</h4><p>Capture concise acceptance criteria now. Evidence references remain part of existing criteria semantics.</p></div><label>Acceptance criteria, one per line<textarea value={criteria} onChange={(event) => setCriteria(event.target.value)} rows={6} placeholder="A reviewer can verify ..." /></label><div className="button-row"><button className="secondary-button" onClick={() => setStep(0)}>Back</button><button className="primary-button" onClick={() => setStep(2)}>Review details</button></div></div>}{step === 2 && <div className="form-card"><div className="review-grid"><span>Title<strong>{title}</strong></span><span>Owner<strong>{owner}</strong></span><span>Status<strong>{status}</strong></span><span>Criteria<strong>{criterionValues.length}</strong></span></div><p className="muted">The next step creates a Rust-owned content-addressed plan. No repository write happens until approval.</p><div className="button-row"><button className="secondary-button" onClick={() => setStep(1)}>Back</button><button className="primary-button" onClick={() => onPlan(intent)}>Create review plan</button></div></div>}</div>;
+  const intent: MutationIntent = { kind: "create_work_item", payload: { title, status, date: today(), owner_scope: owner, affected_scopes: [], depends_on: [], provenance: "concrete", acceptance_criteria: criterionValues.map((text, index) => ({ id: `AC-${String(index + 1).padStart(2, "0")}`, text, state: "pending", evidence: [], provenance: "concrete" })), preflight_confirmed_before_work_started: preflightConfirmed } };
+  return (
+    <div>
+      <div className="panel-heading">
+        <div><p className="eyebrow">GUIDED CREATE · STEP {step + 1} OF 3</p><h3>New work item</h3></div>
+        <button className="quiet-button" onClick={onCancel}>Cancel</button>
+      </div>
+      {step === 0 && <div className="form-card">
+        <label>Title<input autoFocus value={title} onChange={(event) => setTitle(event.target.value)} placeholder="What needs to be governed?" /></label>
+        <label>Owner scope<input value={owner} onChange={(event) => setOwner(event.target.value)} /></label>
+        <label>Initial status<select value={status} onChange={(event) => setStatus(event.target.value)}>{LIFECYCLE_STATUSES.map((value) => <option key={value}>{value}</option>)}</select></label>
+        <button className="primary-button" disabled={!title.trim()} onClick={() => setStep(1)}>Continue to guidance</button>
+      </div>}
+      {step === 1 && <div className="form-card">
+        <div className="guidance-card"><p className="eyebrow">EPHEMERAL GUIDANCE</p><h4>What will prove completion?</h4><p>Capture concise acceptance criteria now. Evidence references remain part of existing criteria semantics.</p></div>
+        <label>Acceptance criteria, one per line<textarea value={criteria} onChange={(event) => setCriteria(event.target.value)} rows={6} placeholder="A reviewer can verify ..." /></label>
+        {criterionValues.length === 0 && <p className="muted">Add at least one acceptance criterion to continue.</p>}
+        <div className="button-row"><button className="secondary-button" onClick={() => setStep(0)}>Back</button><button className="primary-button" disabled={criterionValues.length === 0} onClick={() => setStep(2)}>Review details</button></div>
+      </div>}
+      {step === 2 && <div className="form-card">
+        <div className="review-grid"><span>Title<strong>{title}</strong></span><span>Owner<strong>{owner}</strong></span><span>Status<strong>{status}</strong></span><span>Criteria<strong>{criterionValues.length}</strong></span></div>
+        <p className="muted">The next step creates a Rust-owned content-addressed plan. No repository write happens until approval.</p>
+        <label className="preflight-confirmation"><input type="checkbox" checked={preflightConfirmed} onChange={(event) => setPreflightConfirmed(event.target.checked)} />I confirm this work item is being registered before implementation begins.</label>
+        <div className="button-row"><button className="secondary-button" onClick={() => setStep(1)}>Back</button><button className="primary-button" disabled={!preflightConfirmed || criterionValues.length === 0} onClick={() => onPlan(intent)}>Create review plan</button></div>
+      </div>}
+    </div>
+  );
 }
 
 export function PlanDialog({ plan, onApply, onDiscard, busy }: { plan: MutationPlanView; onApply: () => void; onDiscard: () => void; busy: boolean }) {
-  return <div className="modal-backdrop" role="presentation"><section className="plan-dialog" role="dialog" aria-modal="true" aria-labelledby="plan-title"><div className="panel-heading"><div><p className="eyebrow">RUST-OWNED PLAN</p><h2 id="plan-title">Review proposed mutation</h2></div><button className="quiet-button" onClick={onDiscard}>Close</button></div><div className="handle-banner"><span>Opaque plan handle</span><code>{plan.plan_handle}</code><small>Token {plan.plan_token.slice(0, 16)}… · session-bound</small></div><pre className="preview-box">{plan.preview || "No preview was generated."}</pre>{plan.diagnostics.map((diagnostic) => <div className={diagnostic.blocking ? "diagnostic blocking" : "diagnostic"} key={`${diagnostic.code}-${diagnostic.message}`}><strong>{diagnostic.code}</strong><span>{diagnostic.message}</span></div>)}<div className="impact-list"><h3>Generated impacts</h3>{plan.generated_impacts.length === 0 ? <p className="muted">No generated dashboard impact.</p> : plan.generated_impacts.map((impact) => <div key={impact.path}><strong>{impact.path}</strong><small>{impact.reason}</small></div>)}</div><div className="button-row"><button className="secondary-button" onClick={onDiscard}>Discard plan</button><button className="primary-button" onClick={onApply} disabled={!plan.applicable || busy}>Apply approved plan</button></div>{!plan.applicable && <p className="error-text">This plan is blocked by Rust core diagnostics and cannot be applied.</p>}</section></div>;
+  const blockingDiagnostics = plan.diagnostics.filter((diagnostic) => diagnostic.blocking);
+  const applicable = plan.applicable && blockingDiagnostics.length === 0;
+  return (
+    <div className="modal-backdrop" role="presentation">
+      <section className="plan-dialog" role="dialog" aria-modal="true" aria-labelledby="plan-title">
+        <div className="panel-heading">
+          <div><p className="eyebrow">RUST-OWNED PLAN</p><h2 id="plan-title">Review proposed mutation</h2></div>
+          <button className="quiet-button" onClick={onDiscard}>Close</button>
+        </div>
+        <div className={applicable ? "plan-applicability applicable" : "plan-applicability blocked"} role="status" aria-live="polite">
+          <strong>{applicable ? "Applicable — ready for your review" : "Blocked — cannot be approved"}</strong>
+          <span>{blockingDiagnostics.length === 0 ? "No blocking diagnostics." : `${blockingDiagnostics.length} blocking diagnostic${blockingDiagnostics.length === 1 ? "" : "s"} must be resolved.`}</span>
+        </div>
+        <section className="plan-diagnostics" aria-label="Plan diagnostics">
+          <h3>Plan diagnostics</h3>
+          {plan.diagnostics.length === 0 ? <p className="muted">No diagnostics reported.</p> : plan.diagnostics.map((diagnostic) => (
+            <div className={diagnostic.blocking ? "diagnostic blocking" : "diagnostic"} key={`${diagnostic.code}-${diagnostic.message}`}>
+              <strong>{diagnostic.code}</strong><span>{diagnostic.message}</span>{diagnostic.path && <small>{diagnostic.path}</small>}
+            </div>
+          ))}
+        </section>
+        <div className="handle-banner"><span>Opaque plan handle</span><code>{plan.plan_handle}</code><small>Token {plan.plan_token.slice(0, 16)}… · session-bound</small></div>
+        <pre className="preview-box">{plan.preview || "No preview was generated."}</pre>
+        <div className="impact-list"><h3>Generated impacts</h3>{plan.generated_impacts.length === 0 ? <p className="muted">No generated dashboard impact.</p> : plan.generated_impacts.map((impact) => <div key={impact.path}><strong>{impact.path}</strong><small>{impact.reason}</small></div>)}</div>
+        <div className="button-row">
+          <button className="secondary-button" onClick={onDiscard}>Discard plan</button>
+          <button className="primary-button" onClick={onApply} disabled={!applicable || busy}>Apply approved plan</button>
+        </div>
+        {!applicable && <p className="error-text">This plan is blocked by Rust core diagnostics and cannot be applied.</p>}
+      </section>
+    </div>
+  );
 }
 
 function DecisionsPage({ records, value, onChange, page, onPageChange, compact, detail, record, onOpen, onBack }: { records: DecisionSummaryView[]; value: DecisionTab; onChange: (value: DecisionTab) => void; page: number; onPageChange: (page: number) => void; compact: boolean; detail: { id: string } | null; record: RecordDetailView | null; onOpen: (record: DecisionSummaryView) => void; onBack: () => void }) {

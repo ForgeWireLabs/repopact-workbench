@@ -860,7 +860,7 @@ dependencies = [
  "libc",
  "option-ext",
  "redox_users",
- "windows-sys 0.61.2",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]
@@ -1055,7 +1055,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
 dependencies = [
  "libc",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -2399,7 +2399,7 @@ dependencies = [
  "png 0.18.1",
  "serde",
  "thiserror 2.0.20",
- "windows-sys 0.61.2",
+ "windows-sys 0.60.2",
 ]
 
 [[package]]
@@ -3149,7 +3149,7 @@ dependencies = [
  "once_cell",
  "socket2",
  "tracing",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -3294,7 +3294,7 @@ checksum = "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4"
 [[package]]
 name = "repopact-analysis"
 version = "0.1.0"
-source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=e15fbcfa4a29e1e6df7339bfed56c15c19185f9a#e15fbcfa4a29e1e6df7339bfed56c15c19185f9a"
+source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=1c1f32ae619e8135227acfa87393696ff608951c#1c1f32ae619e8135227acfa87393696ff608951c"
 dependencies = [
  "repopact-graph",
  "repopact-repository",
@@ -3306,7 +3306,7 @@ dependencies = [
 [[package]]
 name = "repopact-core"
 version = "0.1.0"
-source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=e15fbcfa4a29e1e6df7339bfed56c15c19185f9a#e15fbcfa4a29e1e6df7339bfed56c15c19185f9a"
+source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=1c1f32ae619e8135227acfa87393696ff608951c#1c1f32ae619e8135227acfa87393696ff608951c"
 dependencies = [
  "repopact-analysis",
  "repopact-graph",
@@ -3360,7 +3360,7 @@ dependencies = [
 [[package]]
 name = "repopact-graph"
 version = "0.1.0"
-source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=e15fbcfa4a29e1e6df7339bfed56c15c19185f9a#e15fbcfa4a29e1e6df7339bfed56c15c19185f9a"
+source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=1c1f32ae619e8135227acfa87393696ff608951c#1c1f32ae619e8135227acfa87393696ff608951c"
 dependencies = [
  "repopact-repository",
  "repopact-types",
@@ -3415,7 +3415,7 @@ dependencies = [
 [[package]]
 name = "repopact-mutation"
 version = "0.1.0"
-source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=e15fbcfa4a29e1e6df7339bfed56c15c19185f9a#e15fbcfa4a29e1e6df7339bfed56c15c19185f9a"
+source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=1c1f32ae619e8135227acfa87393696ff608951c#1c1f32ae619e8135227acfa87393696ff608951c"
 dependencies = [
  "repopact-graph",
  "repopact-repository",
@@ -3458,7 +3458,7 @@ dependencies = [
 [[package]]
 name = "repopact-repository"
 version = "0.1.0"
-source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=e15fbcfa4a29e1e6df7339bfed56c15c19185f9a#e15fbcfa4a29e1e6df7339bfed56c15c19185f9a"
+source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=1c1f32ae619e8135227acfa87393696ff608951c#1c1f32ae619e8135227acfa87393696ff608951c"
 dependencies = [
  "libc",
  "repopact-types",
@@ -3470,7 +3470,7 @@ dependencies = [
 [[package]]
 name = "repopact-schema"
 version = "0.1.0"
-source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=e15fbcfa4a29e1e6df7339bfed56c15c19185f9a#e15fbcfa4a29e1e6df7339bfed56c15c19185f9a"
+source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=1c1f32ae619e8135227acfa87393696ff608951c#1c1f32ae619e8135227acfa87393696ff608951c"
 dependencies = [
  "jsonschema",
  "repopact-types",
@@ -3480,7 +3480,7 @@ dependencies = [
 [[package]]
 name = "repopact-types"
 version = "0.1.0"
-source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=e15fbcfa4a29e1e6df7339bfed56c15c19185f9a#e15fbcfa4a29e1e6df7339bfed56c15c19185f9a"
+source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=1c1f32ae619e8135227acfa87393696ff608951c#1c1f32ae619e8135227acfa87393696ff608951c"
 dependencies = [
  "serde",
  "serde_json",
@@ -3490,7 +3490,7 @@ dependencies = [
 [[package]]
 name = "repopact-validation"
 version = "0.1.0"
-source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=e15fbcfa4a29e1e6df7339bfed56c15c19185f9a#e15fbcfa4a29e1e6df7339bfed56c15c19185f9a"
+source = "git+https://github.com/ForgeWireLabs/repopact-core?rev=1c1f32ae619e8135227acfa87393696ff608951c#1c1f32ae619e8135227acfa87393696ff608951c"
 dependencies = [
  "regex",
  "repopact-graph",
@@ -3638,7 +3638,7 @@ dependencies = [
  "errno",
  "libc",
  "linux-raw-sys",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -4049,7 +4049,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c3d1e2c7f27f8d4cb10542a02c49005dbd6e93095799d6f3be745fae9f8fedd4"
 dependencies = [
  "libc",
- "windows-sys 0.61.2",
+ "windows-sys 0.60.2",
 ]
 
 [[package]]
@@ -4605,7 +4605,7 @@ dependencies = [
  "getrandom 0.4.3",
  "once_cell",
  "rustix",
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]
@@ -4964,7 +4964,7 @@ dependencies = [
  "png 0.18.1",
  "serde",
  "thiserror 2.0.20",
- "windows-sys 0.61.2",
+ "windows-sys 0.60.2",
 ]
 
 [[package]]
@@ -5052,7 +5052,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
 dependencies = [
  "memoffset",
  "tempfile",
- "windows-sys 0.61.2",
+ "windows-sys 0.60.2",
 ]
 
 [[package]]
@@ -5456,7 +5456,7 @@ version = "0.1.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
 dependencies = [
- "windows-sys 0.61.2",
+ "windows-sys 0.52.0",
 ]
 
 [[package]]

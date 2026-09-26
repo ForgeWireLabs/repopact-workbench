@@ -31,7 +31,7 @@ export interface EffectiveGraphStatus { basis: GraphBasis; durable_freshness: Du
 export interface GraphView { nodes: GraphNode[]; edges: GraphEdge[]; status: EffectiveGraphStatus; }
 export interface AnalysisFindingView { kind: AnalysisKind; classification: FindingClassification; code: string; message: string; basis: RecordRef[]; related_records: string[]; remediation: string | null; }
 export interface AnalysisView { findings: AnalysisFindingView[]; }
-export interface CreateWorkItemIntent { title: string; status: string; date: string; owner_scope: string; affected_scopes: string[]; depends_on: string[]; provenance: string; acceptance_criteria: AcceptanceCriterion[]; }
+export interface CreateWorkItemIntent { title: string; status: string; date: string; owner_scope: string; affected_scopes: string[]; depends_on: string[]; provenance: string; acceptance_criteria: AcceptanceCriterion[]; preflight_confirmed_before_work_started: boolean; }
 export interface WorkItemEditsIntent { title: string | null; owner_scope: string | null; affected_scopes: string[] | null; depends_on: string[] | null; provenance: string | null; acceptance_criteria: AcceptanceCriterion[] | null; }
 export interface EditWorkItemIntent { id: string; changes: WorkItemEditsIntent; date: string; }
 export interface TransitionWorkItemIntent { id: string; status: string; }

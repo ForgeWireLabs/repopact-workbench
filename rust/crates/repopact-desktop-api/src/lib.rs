@@ -314,6 +314,10 @@ pub struct CreateWorkItemIntent {
     pub provenance: String,
     #[serde(default)]
     pub acceptance_criteria: Vec<AcceptanceCriterion>,
+    /// Explicit confirmation that registration is the preflight act and
+    /// implementation has not begun. Missing values fail closed.
+    #[serde(default)]
+    pub preflight_confirmed_before_work_started: bool,
 }
 
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
@@ -359,6 +363,8 @@ impl MutationIntent {
                 depends_on: value.depends_on,
                 provenance: value.provenance,
                 acceptance_criteria: value.acceptance_criteria,
+                preflight_confirmed_before_work_started: value
+                    .preflight_confirmed_before_work_started,
             }),
             Self::EditWorkItem(value) => MutationRequest::EditWorkItem(EditWorkItem {
                 id: value.id,
@@ -1673,6 +1679,7 @@ mod tests {
             depends_on: Vec::new(),
             provenance: "concrete".to_owned(),
             acceptance_criteria: Vec::new(),
+            preflight_confirmed_before_work_started: true,
         });
         let plan = service.plan_mutation(intent).unwrap();
         assert!(!serde_json::to_value(&plan)
@@ -2032,6 +2039,7 @@ mod tests {
         // for `apply_mutation_plan` to succeed rather than merely plan).
         fs::create_dir_all(dir.path().join("governance")).unwrap();
         fs::create_dir_all(dir.path().join("audits")).unwrap();
+        fs::create_dir_all(dir.path().join("audits/reports")).unwrap();
         fs::write(dir.path().join("VERSION"), "0.0.0\n").unwrap();
         fs::write(dir.path().join("AGENTS.md"), "# Agents\n").unwrap();
         fs::write(
@@ -2067,6 +2075,7 @@ mod tests {
             depends_on: Vec::new(),
             provenance: "concrete".to_owned(),
             acceptance_criteria: Vec::new(),
+            preflight_confirmed_before_work_started: true,
         });
         let plan = service.plan_mutation(intent).unwrap();
         let apply = service

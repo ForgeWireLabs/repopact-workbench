@@ -2,7 +2,7 @@
 
 ## Authority boundary
 
-RepoPact Core at revision `6aff2c376efb5ddf236bd11cd1d700f873ec6a4f` is the
+RepoPact Core at revision `1c1f32ae619e8135227acfa87393696ff608951c` is the
 only authority for governance schemas, interpretation, validation, graph,
 analysis, mutation, and headless engine semantics. Workbench owns its UI,
 application orchestration, session state, filesystem observation, and native
