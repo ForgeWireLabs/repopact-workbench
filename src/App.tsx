@@ -398,7 +398,29 @@ function App() {
     setError("");
     try {
       const selected = await desktopApi.selectRepository();
-      if (selected) await loadViews(selected, true);
+      if (selected) {
+        // A repository switch starts a new native session. Clear both the
+        // prior snapshot and its transient UI before loading the new one, so
+        // no records, draft, plan, result toast, or notice can bleed across.
+        setOverview(null);
+        setWorkItems([]);
+        setDecisions([]);
+        setEvidence([]);
+        setGraph(null);
+        setValidation(null);
+        setAnalysis(null);
+        setSelectedWork(null);
+        setSelectedDecision(null);
+        setSelectedEvidence(null);
+        setDetail(null);
+        setPlan(null);
+        setLastApply(null);
+        setNotice("");
+        setSectionTabs(DEFAULT_SECTION_TABS);
+        setPages(EMPTY_PAGES);
+        setWorkQuery("");
+        await loadViews(selected, true);
+      }
     } catch (operationError) {
       setError(failureMessage(operationError));
     } finally {
@@ -579,7 +601,7 @@ function App() {
           {!overview ? <EmptyRepository onSelect={selectRepository} busy={busy} onMobileWorkspaceOpened={onMobileWorkspaceOpened} /> : <>
             <div className="page-heading"><div><p className="eyebrow">ACTIVE REPOSITORY</p><h2>{primaryTabs.find((item) => item.id === tab)?.label}</h2><p className="muted path-text">{overview.identity.root}{overview.identity.linked_worktree ? " · linked Git worktree" : ""}</p></div><span className={overview.validation.valid ? "health-pill healthy" : "health-pill unhealthy"}>{overview.validation.valid ? "Validated" : "Needs attention"}</span></div>
             {tab === "dashboard" && <Dashboard overview={overview} value={sectionTabs.dashboard as DashboardTab} onChange={(value) => setSectionTab("dashboard", value)} onOpen={navigate} />}
-            {tab === "work" && <WorkPage items={workItems} query={workQuery} setQuery={(value) => { setWorkQuery(value); setSectionPage("work", 0); }} selected={selectedWork} value={sectionTabs.work as WorkTab} onChange={(value) => setSectionTab("work", value)} page={pages.work} onPageChange={(value) => setSectionPage("work", value)} compact={compact} detail={detail?.kind === "work" ? detail : null} onOpen={openWorkItem} onBack={() => setDetail(null)} onPlan={submitPlan} />}
+            {tab === "work" && <WorkPage key={`${overview.identity.root}:${overview.generation}`} items={workItems} query={workQuery} setQuery={(value) => { setWorkQuery(value); setSectionPage("work", 0); }} selected={selectedWork} value={sectionTabs.work as WorkTab} onChange={(value) => setSectionTab("work", value)} page={pages.work} onPageChange={(value) => setSectionPage("work", value)} compact={compact} detail={detail?.kind === "work" ? detail : null} onOpen={openWorkItem} onBack={() => setDetail(null)} onPlan={submitPlan} />}
             {tab === "decisions" && <DecisionsPage records={decisions} value={sectionTabs.decisions as DecisionTab} onChange={(value) => setSectionTab("decisions", value)} page={pages.decisions} onPageChange={(value) => setSectionPage("decisions", value)} compact={compact} detail={detail?.kind === "decision" ? detail : null} record={selectedDecision} onOpen={openDecision} onBack={() => setDetail(null)} />}
             {tab === "evidence" && <EvidencePage records={evidence} value={sectionTabs.evidence as EvidenceTab} onChange={(value) => setSectionTab("evidence", value)} page={pages.evidence} onPageChange={(value) => setSectionPage("evidence", value)} compact={compact} detail={detail?.kind === "evidence" ? detail : null} record={selectedEvidence} onOpen={openEvidence} onBack={() => setDetail(null)} />}
             {tab === "graph" && <GraphPage graph={graph} value={sectionTabs.graph as GraphTab} onChange={(value) => setSectionTab("graph", value)} page={pages.graph} onPageChange={(value) => setSectionPage("graph", value)} compact={compact} viewMode={graphViewMode} onViewModeChange={setGraphViewMode} generation={overview.generation} onNavigateToRecord={navigateToRecord} />}
