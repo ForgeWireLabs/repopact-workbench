@@ -290,6 +290,7 @@ function App() {
   const [pages, setPages] = useState<Record<PrimaryTab, number>>(EMPTY_PAGES);
   const [workQuery, setWorkQuery] = useState("");
   const [busy, setBusy] = useState(false);
+  const [repositoryLoading, setRepositoryLoading] = useState(false);
   const [error, setError] = useState("");
   const [notice, setNotice] = useState("");
   const [navOpen, setNavOpen] = useState(false);
@@ -395,6 +396,7 @@ function App() {
 
   const selectRepository = async () => {
     setBusy(true);
+    setRepositoryLoading(true);
     setError("");
     try {
       const selected = await desktopApi.selectRepository();
@@ -424,6 +426,7 @@ function App() {
     } catch (operationError) {
       setError(failureMessage(operationError));
     } finally {
+      setRepositoryLoading(false);
       setBusy(false);
     }
   };
@@ -587,6 +590,7 @@ function App() {
         </div>
       </header>
 
+      {repositoryLoading && <div className="repository-loading" role="status" aria-live="polite" aria-busy="true"><span className="loading-spinner" aria-hidden="true" /><span>Opening repository and preparing its views…</span><span className="loading-progress-track" aria-hidden="true"><span /></span></div>}
       {error && <div className="alert error" role="alert"><strong>Action needed.</strong> {error}<button onClick={() => setError("")} aria-label="Dismiss error">Dismiss</button></div>}
       {notice && <div className="alert notice" role="status">{notice}<button onClick={() => setNotice("")} aria-label="Dismiss notice">Dismiss</button></div>}
 

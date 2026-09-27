@@ -113,6 +113,33 @@ describe("workbench shell", () => {
     expect(screen.getByRole("button", { name: "Apply approved plan" })).toBeDisabled();
   });
 
+  it("keeps the UI responsive and shows progress while repository opening is pending", async () => {
+    const first = repositoryOverview("C:/disposable/repository-one", 1);
+    const second = repositoryOverview("C:/disposable/repository-two", 2);
+    configureRepositoryLoading(first, second);
+    let finishSecondSelection!: (overview: RepositoryOverview) => void;
+    const pendingSecondSelection = new Promise<RepositoryOverview>(resolve => { finishSecondSelection = resolve; });
+    vi.mocked(desktopApi.selectRepository)
+      .mockReset()
+      .mockResolvedValueOnce(first)
+      .mockReturnValueOnce(pendingSecondSelection);
+
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(await screen.findByRole("button", { name: "Choose repository" }));
+    await screen.findByText(first.identity.root);
+    await user.click(await screen.findByRole("button", { name: "Switch repository" }));
+
+    const loadingStatus = screen.getByText("Opening repository and preparing its views…");
+    expect(loadingStatus).toBeVisible();
+    expect(loadingStatus.closest('[aria-busy="true"]')).not.toBeNull();
+    expect(screen.getByRole("heading", { name: "Dashboard" })).toBeInTheDocument();
+
+    finishSecondSelection(second);
+    await screen.findByText(second.identity.root);
+    await waitFor(() => expect(screen.queryByText("Opening repository and preparing its views…")).not.toBeInTheDocument());
+  });
+
   it("clears the applied result and creation draft when switching repositories", async () => {
     const first = repositoryOverview("C:/disposable/repository-one", 1);
     const second = repositoryOverview("C:/disposable/repository-two", 2);
@@ -176,9 +203,13 @@ describe("workbench shell", () => {
     expect(screen.queryByText(first.identity.root)).not.toBeInTheDocument();
     expect(screen.queryByText("Plan applied and post-validation completed.")).not.toBeInTheDocument();
     expect(screen.queryByRole("heading", { name: "New work item" })).not.toBeInTheDocument();
+    const loadingStatus = screen.getByText("Opening repository and preparing its views…");
+    expect(loadingStatus).toBeVisible();
+    expect(loadingStatus.closest('[aria-busy="true"]')).not.toBeNull();
 
     finishSecondRepositoryLoad([]);
     await screen.findByText(second.identity.root);
+    await waitFor(() => expect(screen.queryByText("Opening repository and preparing its views…")).not.toBeInTheDocument());
     await waitFor(() => {
       expect(screen.queryByText("Plan applied and post-validation completed.")).not.toBeInTheDocument();
       expect(screen.queryByRole("heading", { name: "New work item" })).not.toBeInTheDocument();

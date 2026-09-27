@@ -63,10 +63,11 @@ struct AnalyzeRequest {
 /// the rest of the Workbench on Android and is unreachable from a normal
 /// production build.
 #[tauri::command]
-fn select_repository(
+async fn select_repository(
     app: AppHandle,
     service: State<'_, DesktopService>,
 ) -> Result<Option<RepositoryOverview>, DesktopError> {
+    let service = service.inner().clone();
     #[cfg(not(target_os = "android"))]
     {
         let selected = app.dialog().file().blocking_pick_folder();
@@ -79,13 +80,17 @@ fn select_repository(
                 message: "the selected location is not a local directory".to_owned(),
             });
         };
-        service.open_repository(path).map(Some)
+        run_desktop_blocking("open repository", move || service.open_repository(path))
+            .await
+            .map(Some)
     }
     #[cfg(target_os = "android")]
     {
         #[cfg(all(debug_assertions, feature = "android-debug-validation"))]
         if let Some(path) = android_validation::debug_validation_repository_path(&app) {
-            return service.open_repository(path).map(Some);
+            return run_desktop_blocking("open repository", move || service.open_repository(path))
+                .await
+                .map(Some);
         }
         let _ = app;
         Err(DesktopError {
@@ -120,6 +125,21 @@ fn debug_credential_put(
     secret: String,
 ) -> Result<(), repopact_remote_provider::error::RemoteProviderError> {
     android_validation::debug_credential_put(&app, &connection_id, &kind, &secret)
+}
+
+async fn run_desktop_blocking<T>(
+    operation: &'static str,
+    task: impl FnOnce() -> Result<T, DesktopError> + Send + 'static,
+) -> Result<T, DesktopError>
+where
+    T: Send + 'static,
+{
+    tauri::async_runtime::spawn_blocking(task)
+        .await
+        .map_err(|error| DesktopError {
+            code: "workbench.worker-failed".to_owned(),
+            message: format!("{operation} worker failed: {error}"),
+        })?
 }
 
 #[cfg(all(
@@ -178,73 +198,88 @@ fn debug_credential_key_info(
 }
 
 #[tauri::command]
-fn repository_overview(
+async fn repository_overview(
     service: State<'_, DesktopService>,
 ) -> Result<RepositoryOverview, DesktopError> {
-    service.repository_overview()
+    let service = service.inner().clone();
+    run_desktop_blocking("read repository overview", move || {
+        service.repository_overview()
+    })
+    .await
 }
 
 #[tauri::command]
-fn refresh_repository(
+async fn refresh_repository(
     service: State<'_, DesktopService>,
 ) -> Result<RepositoryOverview, DesktopError> {
-    service.refresh_repository()
+    let service = service.inner().clone();
+    run_desktop_blocking("refresh repository", move || service.refresh_repository()).await
 }
 
 #[tauri::command]
-fn validate_repository(service: State<'_, DesktopService>) -> Result<ValidationView, DesktopError> {
-    service.validate_repository()
+async fn validate_repository(
+    service: State<'_, DesktopService>,
+) -> Result<ValidationView, DesktopError> {
+    let service = service.inner().clone();
+    run_desktop_blocking("validate repository", move || service.validate_repository()).await
 }
 
 #[tauri::command]
-fn list_work_items(
+async fn list_work_items(
     query: Option<String>,
     service: State<'_, DesktopService>,
 ) -> Result<Vec<WorkItemSummaryView>, DesktopError> {
-    service.list_work_items(query)
+    let service = service.inner().clone();
+    run_desktop_blocking("list work items", move || service.list_work_items(query)).await
 }
 
 #[tauri::command]
-fn get_work_item(
+async fn get_work_item(
     id: String,
     service: State<'_, DesktopService>,
 ) -> Result<WorkItemDetailView, DesktopError> {
-    service.get_work_item(&id)
+    let service = service.inner().clone();
+    run_desktop_blocking("read work item", move || service.get_work_item(&id)).await
 }
 
 #[tauri::command]
-fn list_decisions(
+async fn list_decisions(
     service: State<'_, DesktopService>,
 ) -> Result<Vec<DecisionSummaryView>, DesktopError> {
-    service.list_decisions()
+    let service = service.inner().clone();
+    run_desktop_blocking("list decisions", move || service.list_decisions()).await
 }
 
 #[tauri::command]
-fn get_decision(
+async fn get_decision(
     id: String,
     service: State<'_, DesktopService>,
 ) -> Result<RecordDetailView, DesktopError> {
-    service.get_decision(&id)
+    let service = service.inner().clone();
+    run_desktop_blocking("read decision", move || service.get_decision(&id)).await
 }
 
 #[tauri::command]
-fn list_evidence(
+async fn list_evidence(
     service: State<'_, DesktopService>,
 ) -> Result<Vec<EvidenceSummaryView>, DesktopError> {
-    service.list_evidence()
+    let service = service.inner().clone();
+    run_desktop_blocking("list evidence", move || service.list_evidence()).await
 }
 
 #[tauri::command]
-fn get_evidence(
+async fn get_evidence(
     id: String,
     service: State<'_, DesktopService>,
 ) -> Result<RecordDetailView, DesktopError> {
-    service.get_evidence(&id)
+    let service = service.inner().clone();
+    run_desktop_blocking("read evidence", move || service.get_evidence(&id)).await
 }
 
 #[tauri::command]
-fn relationship_graph(service: State<'_, DesktopService>) -> Result<GraphView, DesktopError> {
-    service.graph()
+async fn relationship_graph(service: State<'_, DesktopService>) -> Result<GraphView, DesktopError> {
+    let service = service.inner().clone();
+    run_desktop_blocking("read repository graph", move || service.graph()).await
 }
 
 /// The one typed Workbench operator-map query boundary (ROG-027, Decision
@@ -289,7 +324,7 @@ fn graph_build(service: State<'_, DesktopService>) -> Result<RepositoryOverview,
 }
 
 #[tauri::command]
-fn analyze_work_item(
+async fn analyze_work_item(
     request: Option<AnalyzeRequest>,
     service: State<'_, DesktopService>,
 ) -> Result<AnalysisView, DesktopError> {
@@ -297,7 +332,8 @@ fn analyze_work_item(
         .and_then(|request| request.candidate_id)
         .map(AnalysisQuery::for_work_item)
         .unwrap_or_default();
-    service.analyze(query)
+    let service = service.inner().clone();
+    run_desktop_blocking("analyze repository", move || service.analyze(query)).await
 }
 
 #[tauri::command]

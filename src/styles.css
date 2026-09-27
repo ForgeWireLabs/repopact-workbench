@@ -41,6 +41,13 @@ h4 { margin-bottom: 10px; }
 .muted { color: var(--muted); line-height: 1.55; }
 .path-text { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; margin-bottom: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .topbar-actions, .button-row { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+.repository-loading { min-height: 42px; padding: 8px clamp(16px, 3vw, 34px); display: flex; align-items: center; gap: 10px; color: var(--ink); background: var(--panel); border-bottom: 1px solid var(--line); font-size: 12px; }
+.loading-spinner { flex: 0 0 16px; width: 16px; height: 16px; border: 2px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: repository-spin .8s linear infinite; }
+.loading-progress-track { position: relative; overflow: hidden; width: min(180px, 22vw); height: 4px; margin-left: auto; border-radius: 99px; background: var(--line); }
+.loading-progress-track > span { position: absolute; inset: 0 auto 0 0; width: 38%; border-radius: inherit; background: var(--accent); animation: repository-progress 1.2s ease-in-out infinite; }
+@keyframes repository-spin { to { transform: rotate(360deg); } }
+@keyframes repository-progress { from { transform: translateX(-110%); } to { transform: translateX(270%); } }
+@media (prefers-reduced-motion: reduce) { .loading-spinner, .loading-progress-track > span { animation-duration: 2.4s; } }
 .mobile-workspace-row { display: flex; flex-direction: column; gap: 6px; padding: 8px 0; }
 .mobile-workspace-row-header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
 .mobile-workspace-row-actions { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
