@@ -140,6 +140,55 @@ describe("workbench shell", () => {
     await waitFor(() => expect(screen.queryByText("Opening repository and preparing its views…")).not.toBeInTheDocument());
   });
 
+  it("clears repository-loading progress when the native picker is cancelled", async () => {
+    const first = repositoryOverview("C:/disposable/repository-one", 1);
+    configureRepositoryLoading(first, first);
+    let finishCancelledSelection!: (overview: null) => void;
+    const cancelledSelection = new Promise<null>(resolve => { finishCancelledSelection = resolve; });
+    vi.mocked(desktopApi.selectRepository)
+      .mockReset()
+      .mockResolvedValueOnce(first)
+      .mockReturnValueOnce(cancelledSelection);
+
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(await screen.findByRole("button", { name: "Choose repository" }));
+    await screen.findByText(first.identity.root);
+
+    await user.click(await screen.findByRole("button", { name: "Switch repository" }));
+    expect(screen.getByText("Opening repository and preparing its views…")).toBeVisible();
+    finishCancelledSelection(null);
+    await waitFor(() => expect(screen.queryByText("Opening repository and preparing its views…")).not.toBeInTheDocument());
+
+    expect(screen.getByText(first.identity.root)).toBeInTheDocument();
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+  });
+
+  it("clears repository-loading progress and reports a destination load failure", async () => {
+    const first = repositoryOverview("C:/disposable/repository-one", 1);
+    const second = repositoryOverview("C:/disposable/repository-two", 2);
+    configureRepositoryLoading(first, second);
+    let failDestinationLoad!: (error: Error) => void;
+    const failingDestinationLoad = new Promise<[]>((_resolve, reject) => { failDestinationLoad = reject; });
+    vi.mocked(desktopApi.workItems)
+      .mockReset()
+      .mockResolvedValueOnce([])
+      .mockReturnValueOnce(failingDestinationLoad);
+
+    const user = userEvent.setup();
+    render(<App />);
+    await user.click(await screen.findByRole("button", { name: "Choose repository" }));
+    await screen.findByText(first.identity.root);
+    await user.click(await screen.findByRole("button", { name: "Switch repository" }));
+
+    expect(screen.getByText("Opening repository and preparing its views…")).toBeVisible();
+    failDestinationLoad(new Error("destination index unavailable"));
+    await screen.findByText("destination index unavailable");
+    await waitFor(() => expect(screen.queryByText("Opening repository and preparing its views…")).not.toBeInTheDocument());
+    expect(screen.queryByText(first.identity.root)).not.toBeInTheDocument();
+    expect(screen.queryByText(second.identity.root)).not.toBeInTheDocument();
+  });
+
   it("clears the applied result and creation draft when switching repositories", async () => {
     const first = repositoryOverview("C:/disposable/repository-one", 1);
     const second = repositoryOverview("C:/disposable/repository-two", 2);
