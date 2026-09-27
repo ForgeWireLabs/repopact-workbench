@@ -1,0 +1,35 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-009-repository-switch-reset-2026-09-27",
+  "work_item": "WI074",
+  "requirement": "RPS-009",
+  "recorded_at": "2026-09-27T17:10:46Z",
+  "baseline_commit": "c2730ec8d5a6055aef6597f004fb7b47b24be1c2",
+  "implementation_commit": "51961de8abc711f25b1f08aedd707facc356f40c",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "1c1f32ae619e8135227acfa87393696ff608951c",
+  "result": "partial; acceptance remains pending",
+  "checks": [
+    {
+      "platform": "Windows 11 x64",
+      "command": "npm test -- --run; npm run typecheck; npm run build; npm run types:check",
+      "result": "passed; frontend tests 35/35 across 8 files; typecheck, production build, and generated-type check passed",
+      "details": "A regression test enters the WI075 creation flow, reviews and applies a successful plan, switches repositories while the second repository load is pending, and verifies the first repository's root, success notice, wizard, and draft are immediately absent and remain absent after loading. The fix clears repository-scoped view/selection/plan/apply/notice state before loading the new session and keys the Work page by repository identity and generation so its local wizard state remounts. The operator's screenshots reproduced the stale toast and wizard on repository-two before this correction. Filesystem checks showed repository-one alone contains the expected WI075 and regenerated dashboard; repository-two remained clean at Core 1c1f32ae619e8135227acfa87393696ff608951c.",
+      "limitation": "The operator must repeat the repository-switch interaction against the corrected running build. Computer Use capture failed twice with `SetIsBorderRequired failed: No such interface supported (0x80004002)`; no post-fix manual acceptance is claimed. The earlier operator interaction demonstrated the defect, not the corrected behavior."
+    },
+    {
+      "platform": "Disposable corrected-Core acceptance clones",
+      "command": "C:\\w074\\venv-repopact-core-mutation-fix\\Scripts\\repopact.exe validate",
+      "result": "passed for repository-one after WI075 plan application",
+      "details": "The corrected repository-one dashboard screenshot reported 0 errors and 0 warnings. Canonical validation passed using the matching local CLI/native engine environment. Repository-two stayed unchanged and clean at the pinned Core baseline. The machine-global `repopact` executable was separately observed to pair CLI 3.1.3.dev1 with engine 3.1.0.dev1 and fail the version handshake; it was not used as validation authority."
+    },
+    {
+      "platform": "Workbench source and reachable history",
+      "command": "gitleaks git --redact --report-format json; gitleaks dir --redact --report-format json",
+      "result": "passed; 0 history findings and 0 final-tree findings after generated-artifact cleanup",
+      "details": "Gitleaks 8.30.1 scanned the nine-commit history with no findings. The initial tree scan flagged one private-key pattern in an ignored Rust `.rmeta` artifact under `target/`; review identified it as generated build metadata, not a source or tracked file. After confirming no Rust build process was active, `cargo clean` removed 1,376 generated files (699.7 MiB). The rescan covered about 52.68 MB and found no leaks. Redacted reports are outside the repository."
+    }
+  ],
+  "acceptance": "pending",
+  "reason": "The automated repository-switch regression passes, but the corrected interaction still needs a live manual retest. WI074's separate Android runtime proof also remains unverified against the current Core pin as recorded in prior evidence."
+}
