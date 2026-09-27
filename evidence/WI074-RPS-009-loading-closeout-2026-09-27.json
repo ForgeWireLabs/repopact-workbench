@@ -1,0 +1,58 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-009-loading-closeout-2026-09-27",
+  "work_item": "WI074",
+  "requirement": "RPS-009",
+  "recorded_at": "2026-09-27T20:02:59Z",
+  "baseline_commit": "c2730ec8d5a6055aef6597f004fb7b47b24be1c2",
+  "implementation_commit": "c19197879bf4a4c10e28b579f5fca69295b8ccf8",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "1c1f32ae619e8135227acfa87393696ff608951c",
+  "result": "passed for the desktop mutation, repository-switch, loading, and regression checks",
+  "checks": [
+    {
+      "platform": "Windows desktop",
+      "command": "Operator-confirmed disposable WI075 plan review/apply and repository switch in the corrected Workbench build; see WI074-RPS-009-manual-loading-switch-2026-09-27.json",
+      "result": "passed",
+      "details": "The operator confirmed a truthful preflight timestamp, an applicable plan with no blocking diagnostics, successful apply and canonical post-validation, and correct destination repository state without the previous toast or draft. Loading remained responsive, was visible during the switch, and disappeared when the destination was ready. The confirmation is preserved in the referenced manual evidence record."
+    },
+    {
+      "platform": "Windows frontend tests",
+      "command": "npm test -- --run",
+      "result": "passed; 38 tests across 8 files",
+      "details": "Includes deferred repository opening with an accessible indeterminate busy indicator, destination loading while old repository state remains cleared, native-picker cancellation, and destination-load failure cleanup."
+    },
+    {
+      "platform": "Windows Rust regression",
+      "command": "cargo test --locked -p repopact-desktop-api session_switch_invalidates_old_plan_and_keeps_linked_identity",
+      "result": "passed; 1 test",
+      "details": "A mutation plan created in the prior session is rejected after opening another repository."
+    },
+    {
+      "platform": "Windows frontend and generated protocol",
+      "command": "npm run typecheck; npm run types:check; npm run build; git diff --check",
+      "result": "passed",
+      "details": "Generated frontend protocol types remained unchanged; production frontend build and whitespace validation passed."
+    },
+    {
+      "platform": "Debian GNU/Linux 13 under WSL2",
+      "command": "From a clean local clone at implementation commit c19197879bf4a4c10e28b579f5fca69295b8ccf8, cargo test --workspace --all-targets --locked --quiet inside dbus-run-session; cargo build --workspace --locked",
+      "result": "passed; 245 tests passed, 10 intentionally ignored, 0 failed; clean-clone workspace build passed",
+      "details": "The Linux test and build resolved all eight direct Workbench Core crates and Cargo.lock entries to the same immutable HTTPS revision 1c1f32ae619e8135227acfa87393696ff608951c. This is Debian WSL2 Linux build/test evidence, not a WSLg GUI run or a bare-metal Linux desktop runtime claim."
+    },
+    {
+      "platform": "Debian GNU/Linux 13 under WSL2, isolated test services",
+      "command": "dbus-run-session with disposable GNOME Keyring and isolated XDG data/config/cache/runtime directories; Secret Service read/write/delete probe",
+      "result": "passed; disposable probe deleted and temporary keyring data removed",
+      "details": "A random one-use password and probe value were used; no production credentials were used. The ordinary login.keyring file remained unchanged (its recorded modification time predates this run), no GNOME Keyring daemon remained, and both temporary validation roots were absent afterward. A preliminary setup-only attempt without dbus-run-session was interrupted before any test execution and is excluded from results."
+    }
+  ],
+  "evidence_correction": {
+    "corrects_evidence_id": "wi074-rps-009-async-repository-loading-2026-09-27",
+    "incorrect_recorded_implementation_commit": "8266c4b4b63121ec45b77e06b1e295116c00fc86",
+    "incorrect_revision_resolves_in_workbench_repository": false,
+    "verified_implementation_commit": "8266c4b8969b065a101e56d7cf8c59cf9f2c9053",
+    "basis": "The complete local Git history identifies the async-loading implementation commit as 8266c4b8969b065a101e56d7cf8c59cf9f2c9053; the adjacent operator-confirmed manual evidence record already names that exact commit. The earlier evidence file is retained unchanged; this addendum corrects its commit pointer only."
+  },
+  "scope_note": "The canonical WI074 ledger and consolidated RPS-009/RPS-011 decisions are owned by ForgeWireLabs/repopact-core. This Workbench record preserves implementation, test, and operator evidence; it does not itself transition canonical acceptance state."
+}
