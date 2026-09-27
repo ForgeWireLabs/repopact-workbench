@@ -1,0 +1,22 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-009-manual-loading-switch-2026-09-27",
+  "work_item": "WI074",
+  "requirement": "RPS-009",
+  "recorded_at": "2026-09-27T18:28:35Z",
+  "baseline_commit": "c2730ec8d5a6055aef6597f004fb7b47b24be1c2",
+  "implementation_commit": "8266c4b8969b065a101e56d7cf8c59cf9f2c9053",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "1c1f32ae619e8135227acfa87393696ff608951c",
+  "result": "manual repository-switch acceptance confirmed by operator",
+  "checks": [
+    {
+      "platform": "Windows desktop",
+      "command": "Operator manually switched between repositories in the updated local Workbench build",
+      "result": "passed; loading indicator worked and repository-scoped UI remained correct",
+      "details": "The operator confirmed that loading was asynchronous/responsive with the progress indicator visible during the switch, and that the prior repository's toast/draft did not reappear in the destination repository. The test build was C:\\w074\\desktop-target-async-loading\\debug\\repopact-desktop.exe, built from implementation commit 8266c4b8969b065a101e56d7cf8c59cf9f2c9053 with Core pinned to 1c1f32ae619e8135227acfa87393696ff608951c."
+    }
+  ],
+  "acceptance": "pending",
+  "reason": "The manual desktop loading and repository-isolation check is satisfied. WI074 RPS-009 remains pending for its other platform/runtime gates; this record does not alter those states."
+}
