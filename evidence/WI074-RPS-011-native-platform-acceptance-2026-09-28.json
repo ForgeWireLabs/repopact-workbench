@@ -1,0 +1,92 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-011-native-platform-acceptance-2026-09-28",
+  "work_item": "WI074",
+  "requirement": "RPS-011",
+  "recorded_at": "2026-09-28T00:15:38Z",
+  "baseline_commit": "b29efccf2697e9e725e39bce5b6921b7550e0ab1",
+  "implementation_commit": "b29efccf2697e9e725e39bce5b6921b7550e0ab1",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "1c1f32ae619e8135227acfa87393696ff608951c",
+  "result": "partial; Windows validation and Android API 35 x86_64 runtime passed, Linux WSL2 source/build/test passed, but Linux graphical desktop runtime and bare-metal Linux host coverage are not established",
+  "checks": [
+    {
+      "platform": "Windows x64 desktop build and regression",
+      "command": "cargo test --workspace --all-targets --locked; cargo build --locked --package repopact-desktop; npm test -- --run; npm run typecheck; npm run build; npm run types:check",
+      "result": "passed",
+      "details": "Executed against the published Workbench baseline b29efccf2697e9e725e39bce5b6921b7550e0ab1 with all eight direct Core dependencies and Cargo.lock entries resolving to 1c1f32ae619e8135227acfa87393696ff608951c. Rust workspace tests, native Windows desktop build, all 38 frontend tests across 8 files, TypeScript checks, production frontend build, and generated-type check passed. The generated-type check produced no source diff. Existing operator-confirmed Windows GUI mutation, repository-switch and asynchronous-loading evidence remains linked in WI074-RPS-009-loading-closeout-2026-09-27.json and WI074-RPS-009-manual-loading-switch-2026-09-27.json; those manual interactions were not repeated in this platform run."
+    },
+    {
+      "platform": "Debian GNU/Linux 13 x86_64 under WSL2, headless native build and tests",
+      "command": "cargo test --workspace --all-targets --locked; cargo build --locked --package repopact-desktop; cargo test --workspace --all-targets --locked --quiet (isolated D-Bus and XDG directories)",
+      "result": "passed; focused credential-store tests 5 passed, 3 intentionally ignored, 0 failed; full locked workspace tests and native desktop build succeeded",
+      "details": "The tests and build used Workbench commit b29efccf2697e9e725e39bce5b6921b7550e0ab1 and immutable Core pin 1c1f32ae619e8135227acfa87393696ff608951c, with RUSTUP_HOME and CARGO_HOME pointing to the installed user toolchain/cache and test HOME, XDG data/config/cache/runtime, and Cargo target isolated under /home/Jeremy-L/.cache/wi074-rps011-linux-suite.WdA5dP. A disposable Secret Service provider passed independent read/write/delete probing; no production credentials were used. The Linux desktop ELF had no unresolved shared-library dependencies and no Python libraries. A final PowerShell-to-Bash wrapper returned 127 after successful Cargo commands because a trailing carriage return was interpreted as a shell command; this is a wrapper-formatting defect, not a Cargo test/build failure. The separate WSLg window capture showed the Codex/Windows desktop rather than the Workbench surface, so no Linux graphical runtime acceptance is claimed. WSL2 compilation is not evidence of bare-metal Linux desktop runtime."
+    },
+    {
+      "platform": "Android 15 API 35 x86_64 emulator runtime",
+      "command": "npm run tauri -- android build --debug --apk --split-per-abi --target aarch64 armv7 i686 x86_64 --ci; install and launch x86_64 APK on isolated API 35 AVD; exercise SAF import, session, validation, graph, navigation, disposable mutation preview/apply, post-validation and restart/resume",
+      "result": "passed for x86_64 build/runtime and listed Core-backed scenarios; folder restriction recovery observed with limitation",
+      "details": "Built from clean Workbench source commit b29efccf2697e9e725e39bce5b6921b7550e0ab1 against Core 1c1f32ae619e8135227acfa87393696ff608951c. SAF imported the disposable repository into app-private workspace ddc158cf-832c-4f78-9e73-239ef5c8caf5; source fixtures were not modified. Canonical validation and graph query worked, Work and Decisions navigation worked, and a mutation plan with no blocking diagnostics applied to disposable app-private data and passed post-apply validation. Restart returned to repository selection; reopening the repository worked and validation remained green. Android's SAF correctly rejected selecting the Download root and the app recovered; this did not exercise an OS permission-denial dialog or prove every permission-revocation path. A disposable test criterion had duplicated trailing text due test keyboard input; it remained only in the unexported app-private test copy. The personal AVD was not used."
+    },
+    {
+      "platform": "Android supported ABI package builds",
+      "command": "Build split-per-ABI debug APKs for aarch64, armv7, i686 and x86_64; inspect package metadata with aapt and hash each APK",
+      "result": "passed; build-only for arm, arm64 and x86; x86_64 additionally runtime-tested",
+      "details": "All APKs identified as com.forgewirelabs.repopact.workbench, versionCode 1000, versionName 0.1.0, min SDK 24 and compile/target SDK 36. arm APK: 206695116 bytes, SHA-256 F3EFDB5C376449694537B66737B3A1D08CA6A0EFF81826D88CA3BB3DED6F689D. arm64 APK: 235873982 bytes, SHA-256 1A928F0FF2ABD8D0B662A4E2FF77FF914A450F63970E1230D21E271DF72024FF. x86 APK: 222389740 bytes, SHA-256 660EDD30B6BCF60EA5A3FB8DC2CCC2B4AA520A80325646BFFF3E0F5E7F4ADB51. x86_64 APK: 237546899 bytes, SHA-256 0E9A6743EA1D5F6450A8B71E7AE48FD60662577844ABE28F76686D85A2D9637D."
+    },
+    {
+      "platform": "Linux graphical desktop runtime",
+      "command": "Inspect available Debian WSL2/WSLg environment and capture the target Workbench window through the configured Computer Use window-state path",
+      "result": "not demonstrated; remains outstanding",
+      "details": "Screenshot capture itself is functional after the local Computer Use fix, but the WSLg window state exposed the Codex/Windows desktop rather than the Workbench GUI. No Linux Workbench GUI interactions or screenshots were obtained. A suitable isolated graphical Linux session must be made visible to the capture/control path before this criterion can be accepted. Bare-metal Linux coverage also remains unverified. macOS and iOS were not tested and are not claimed."
+    },
+    {
+      "platform": "Security review",
+      "command": "Gitleaks 8.30.1 --redact=100 git scan of inherited Workbench history; directory scan of final Workbench tree and four Android APK build outputs",
+      "result": "passed; zero findings in history, tree and APKs",
+      "details": "All reports are redacted and retained outside the repository under C:\\w074\\app-data\\rps011-20260927. This scan occurred against the audited working tree before evidence commit; post-commit history/tree scans are repeated before publication."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "evidence/artifacts/wi074-rps011-android-api35-x86_64-2026-09-27/dashboard-postapply.png",
+      "bytes": 194392,
+      "sha256": "5FF25F7A83E028B2710235CA683481439E2F45A622267EC068BE91AC2CE3DE93",
+      "description": "Dashboard with zero errors and warnings after disposable mutation"
+    },
+    {
+      "path": "evidence/artifacts/wi074-rps011-android-api35-x86_64-2026-09-27/decisions-navigation.png",
+      "bytes": 220977,
+      "sha256": "8496F5B9C46131AC71EC67F121F167AD6031541CF536D2D029C226F9C2E80BA6",
+      "description": "Decision navigation"
+    },
+    {
+      "path": "evidence/artifacts/wi074-rps011-android-api35-x86_64-2026-09-27/graph-query.png",
+      "bytes": 237984,
+      "sha256": "F5828FD63B31E3BFF44F67A5890F7F5EF163016EFD8EBD45134492B368CCBFDC",
+      "description": "Graph query result"
+    },
+    {
+      "path": "evidence/artifacts/wi074-rps011-android-api35-x86_64-2026-09-27/plan-applicability-no-diagnostics.png",
+      "bytes": 65696,
+      "sha256": "43EC989D558EE554F2A698525EA7C7C69966765DD8E2F40DC4F36279B147F041",
+      "description": "Sanitized plan applicability and no-blocking-diagnostics crop; session token excluded"
+    },
+    {
+      "path": "evidence/artifacts/wi074-rps011-android-api35-x86_64-2026-09-27/restart-and-resume.png",
+      "bytes": 227905,
+      "sha256": "2954F57AA95F176F21BC82C780C78BE1801F53E0A5A5EF0F5C5BED00CB9DBAAE",
+      "description": "App restart and repository resume"
+    },
+    {
+      "path": "evidence/artifacts/wi074-rps011-android-api35-x86_64-2026-09-27/saf-folder-restriction.png",
+      "bytes": 81661,
+      "sha256": "B1919930785C2387471ADC58DBB53279F631FB4B62407478760F9E731930C3A3",
+      "description": "SAF folder restriction message and recovery"
+    },
+    "Windows native executable: C:\\w074\\rps011-workbench-windows-target\\debug\\repopact-desktop.exe, SHA-256 1F70C58A1022BD859728419841C5B7E57734DFC6B787A01848F473F28E25FE3B (task-generated and will be removed after evidence capture)",
+    "Linux native executable: /home/Jeremy-L/.cache/wi074-rps011-linux-suite.WdA5dP/target/debug/repopact-desktop, SHA-256 67bb888a71ef114b8e21bdcd0d6174ad37fc9f7de5f3dd67bf5dbc2ae96b90cf (task-generated and will be removed after evidence capture)",
+    "Android split APKs: C:\\w074\\wi074-rps011-workbench-b29\\src-tauri\\gen\\android\\app\\build\\outputs\\apk (task-generated; hashes and ABI disposition recorded above)"
+  ],
+  "scope_note": "This Workbench record documents platform implementation and test evidence only. It does not itself change canonical WI074 acceptance state in RepoPact Core. RPS-011 remains pending because Linux graphical runtime and independent bare-metal Linux coverage have not been demonstrated; macOS and iOS remain untested. The Android screenshots are curated and exclude the session-bound plan token. No installer was created or released."
+}
