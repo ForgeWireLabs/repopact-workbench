@@ -1,0 +1,46 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ForgeWireLabs/repopact-core/1c1f32ae619e8135227acfa87393696ff608951c/repopact/schemas/work-item.schema.json",
+  "id": "001",
+  "title": "Patch vulnerable Workbench Vite development dependencies",
+  "status": "active",
+  "owner_scope": "application",
+  "affected_scopes": [
+    "application",
+    "evidence"
+  ],
+  "depends_on": [],
+  "provenance": "concrete",
+  "preflight": {
+    "created_before_work_started": true,
+    "created_at": "2026-10-21T18:12:56Z",
+    "note": "Registered after reviewing the lockfile and current GitHub advisories, before changing package versions. Scope is the development toolchain only; runtime dependencies and the Core pin are excluded."
+  },
+  "acceptance_criteria": [
+    {
+      "id": "WBSEC-001",
+      "text": "Update Vite and the transitive source-map-js resolution to fixed versions compatible with the existing plugin and Node runtime; preserve the exact Core pin and production dependency set.",
+      "state": "satisfied",
+      "evidence": [
+        "WBSEC-001-security-dependency-update-2026-10-21"
+      ]
+    },
+    {
+      "id": "WBSEC-002",
+      "text": "Run the full and production-only npm audits and record the advisories, resolved versions, dependency paths, and remaining findings.",
+      "state": "satisfied",
+      "evidence": [
+        "WBSEC-001-security-dependency-update-2026-10-21"
+      ]
+    },
+    {
+      "id": "WBSEC-003",
+      "text": "Run frontend typecheck, frontend tests, production frontend build, generated API type check, and the locked Rust workspace tests after the lockfile update.",
+      "state": "satisfied",
+      "evidence": [
+        "WBSEC-001-security-dependency-update-2026-10-21"
+      ]
+    }
+  ],
+  "created": "2026-10-21",
+  "updated": "2026-10-21"
+}
