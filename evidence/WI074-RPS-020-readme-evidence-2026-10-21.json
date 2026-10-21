@@ -1,0 +1,92 @@
+{
+  "format": "workbench-documentation-evidence-v1",
+  "evidence_id": "wi074-rps-020-readme-evidence-2026-10-21",
+  "work_item": "WI074",
+  "requirement": "RPS-020",
+  "recorded_at": "2026-10-21T17:01:55Z",
+  "result": "partial; public README product tour and visual evidence are updated, while the broader RPS-020 documentation inventory remains open",
+  "baseline_commit": "57bcde6b558fc050384fffc1ca0abf96634c8b49",
+  "application_source_commit": "57bcde6b558fc050384fffc1ca0abf96634c8b49",
+  "core_repository": "ForgeWireLabs/repopact-core",
+  "core_revision": "1c1f32ae619e8135227acfa87393696ff608951c",
+  "environment": {
+    "platform": "Windows x64 desktop",
+    "workbench_version": "0.1.0",
+    "core_release_at_pinned_revision": "3.1.3",
+    "capture_date": "2026-10-21",
+    "capture_build": "Local Tauri development build started with npm run tauri -- dev",
+    "demo_repository": "Disposable copy of repopact-core/conformance/fixtures/valid from Core commit e6a980bc87b4698f8c031d56b64ad3629ad99c82, opened as C:\\Projects\\repopact-public-demo",
+    "scenario": "Dashboard, work-item detail, validation, and graph relationship table were inspected. No mutation was applied. Dashboard displayed 0 errors and 0 warnings; the graph view showed a working overlay."
+  },
+  "checks": [
+    {
+      "command": "npm ci",
+      "result": "passed",
+      "details": "Installed the lockfile dependencies. npm reported two high-severity advisories in the full dependency tree; no dependency changes were made."
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "passed",
+      "details": "TypeScript completed with no diagnostics."
+    },
+    {
+      "command": "npm test -- --run",
+      "result": "passed; 8 files and 38 tests passed",
+      "details": "Vitest emitted the existing jsdom notice that HTMLCanvasElement.getContext is not implemented; the suite completed successfully."
+    },
+    {
+      "command": "npm run build",
+      "result": "passed",
+      "details": "TypeScript check and Vite production frontend build completed."
+    },
+    {
+      "command": "npm run types:check",
+      "result": "passed",
+      "details": "Generated API types matched the checked-in source."
+    },
+    {
+      "command": "cargo test --workspace --all-targets --locked",
+      "result": "passed",
+      "details": "All workspace test targets completed without failures; explicitly ignored host and live-network cases remain unexecuted."
+    },
+    {
+      "command": "npm audit --omit=dev --audit-level=high",
+      "result": "passed; zero production-dependency vulnerabilities reported",
+      "details": "This scope excludes development dependencies; the full npm ci audit still reported two high-severity advisories."
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/assets/readme/workbench-desktop-dashboard.jpg",
+      "bytes": 84002,
+      "sha256": "30D0F5657CACD3340E095290F7429A5100A038001B2B77B295589D57F0391CC6",
+      "description": "Native Windows desktop dashboard from the disposable repository"
+    },
+    {
+      "path": "docs/assets/readme/workbench-desktop-work-detail.jpg",
+      "bytes": 95335,
+      "sha256": "F001CC8C702431CB9EE64100A70E04310B061505797D09265B4CC52DD2188B8A",
+      "description": "Work-item detail with lifecycle, owner, evidence-linked criterion, and relationships"
+    },
+    {
+      "path": "docs/assets/readme/workbench-desktop-validation.jpg",
+      "bytes": 69288,
+      "sha256": "4E782151E6A4B785C9844D8A9E64259C9D673D46BA07D21269F2F9121661190B",
+      "description": "Canonical validation view for the disposable repository"
+    },
+    {
+      "path": "docs/assets/readme/workbench-desktop-graph.jpg",
+      "bytes": 119977,
+      "sha256": "60A3C167027878B3018F7DACBF32088DFE3B07A96DA33B05B22DF4B908F9AF31",
+      "description": "Repository relationship table showing the working overlay and source paths"
+    },
+    {
+      "path": "docs/assets/readme/plan-review-android-api35.png",
+      "bytes": 65696,
+      "sha256": "43EC989D558EE554F2A698525EA7C7C69966765DD8E2F40DC4F36279B147F041",
+      "description": "Previously curated Android API 35 x86_64 plan-review crop; the session token is excluded. See WI074-RPS-011 native platform acceptance evidence."
+    }
+  ],
+  "scope_note": "This evidence supports the README showcase, screenshot provenance, version relationship, and local validation checks only. It does not close all installation, configuration, security, migration, API/CLI, contributor, release, or support documentation work in RPS-020. No application source or dependency version was changed.",
+  "no_secrets_confirmation": "The disposable screenshots contain no credentials or session-bound plan tokens. The displayed repository path is the synthetic demo folder, not a personal repository."
+}
