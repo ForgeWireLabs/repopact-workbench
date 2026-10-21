@@ -33,16 +33,18 @@ Workbench's views help people navigate the repository. The versioned records rem
 6. **Apply or discard.** Applying is an explicit action. Plans are opaque and session-bound at the native/Core boundary; stale plans are rejected.
 7. **Validate.** A successful apply is followed by Core validation. The resulting records and evidence in the repository are the durable state.
 
+**Inspect a work item and its evidence**
+
+![Workbench work-item detail showing lifecycle status, owner scope, an evidence-linked criterion, and record relationships.](docs/assets/readme/workbench-desktop-work-detail.jpg)
+
+*Genuine Windows x64 capture from the disposable demonstration repository described above.*
+
 ### See the application
 
 The desktop gallery uses genuine Windows x64 captures from the same local source build and disposable repository as the hero. The fixture was not changed to produce the images.
 
 <details>
 <summary>Open the desktop workflow gallery</summary>
-
-**Inspect work and its acceptance evidence**
-
-![Workbench work-item detail showing lifecycle status, owner scope, an evidence-linked criterion, and record relationships.](docs/assets/readme/workbench-desktop-work-detail.jpg)
 
 **Check canonical validation**
 
