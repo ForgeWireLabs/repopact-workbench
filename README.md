@@ -4,13 +4,11 @@
 
 Workbench is the native interface for exploring RepoPact records and preparing supported changes. It brings work, decisions, evidence, validation, and repository relationships into one reviewable workflow.
 
-[What you can do](#what-you-can-do) · [Reviewable workflow](#a-reviewable-workflow) · [Get started](#get-started) · [Core relationship](#workbench-and-core)
+[Explore the desktop app](#see-the-application) · [Reviewable workflow](#a-reviewable-workflow) · [Get started](#get-started) · [Core relationship](#workbench-and-core)
 
-![Cropped genuine Workbench work-item detail showing lifecycle status, owner scope, an evidence-linked criterion, and record relationships.](docs/assets/readme/workbench-work-item-detail-crop.jpg)
+![RepoPact Workbench desktop dashboard showing an open repository, active work, evidence and decisions, with the native navigation visible.](docs/assets/readme/workbench-desktop-dashboard.jpg)
 
-*Genuine Windows x64 capture from a local source build and a disposable copy of the Core conformance fixture. No private repository, credentials, or session tokens are shown.*
-
-The capture is cropped to the record panel for legibility; the uncropped capture and image provenance are preserved in the asset inventory.
+*Genuine Windows x64 capture from a local Workbench source build and a disposable Core conformance fixture. No private repository, credentials, or session tokens are shown.*
 
 Workbench presents repository state for people to inspect; the versioned records remain authoritative. [RepoPact Core](https://github.com/ForgeWireLabs/repopact-core) owns their semantics and validation.
 
@@ -39,20 +37,19 @@ Workbench's views help people navigate the repository. The versioned records rem
 
 ### See the application
 
-The dashboard is the starting point for the desktop tour. Open the gallery for validation and relationship views.
+These Windows x64 captures use the same disposable Core conformance fixture. They show real Workbench screens from a local source build; the original captures, provenance, and hashes are listed in the [visual asset inventory](docs/assets/readme/visual-asset-inventory.json).
 
-<details>
-<summary>Open the desktop workflow gallery</summary>
+**Inspect a work item and its evidence links**
 
-![Workbench dashboard showing the active disposable repository, healthy session, and counts for work, evidence, decisions, and graph edges.](docs/assets/readme/workbench-desktop-dashboard.jpg)
+![Workbench work-item detail showing lifecycle status, owner scope, an evidence-linked criterion, and record relationships.](docs/assets/readme/workbench-desktop-work-detail.jpg)
 
-*Windows x64 desktop capture from a local source build.*
+**Review validation diagnostics**
+
+![Workbench validation view showing repository diagnostics and their source paths.](docs/assets/readme/workbench-desktop-validation.jpg)
 
 **Explore repository relationships**
 
 ![Workbench graph relationship table showing record links and their source paths.](docs/assets/readme/workbench-desktop-graph.jpg)
-
-</details>
 
 [GitHub social-preview image, 1280 × 640](docs/assets/readme/workbench-social-preview.png) · [Visual asset inventory and provenance](docs/assets/readme/visual-asset-inventory.json)
 

@@ -1,7 +1,7 @@
 {
   "format": "repopact-visual-assets-v1",
   "repository": "ForgeWireLabs/repopact-workbench",
-  "source_readme_revision": "eeeef82cc30fa7c40ecdb1c1e2e662f2e2109e1d",
+  "source_readme_revision": "57bcde6b558fc050384fffc1ca0abf96634c8b49",
   "social_preview": {
     "svg": "docs/assets/readme/workbench-social-preview.svg",
     "png": "docs/assets/readme/workbench-social-preview.png",
@@ -9,7 +9,7 @@
       1280,
       640
     ],
-    "sha256": "C4B2B30C71E34CEA5D50FEAF565E13A421408D17A2C99FF176CA4C36035EC404",
+    "sha256": "c4b2b30c71e34cea5d50feaf565e13a421408d17a2c99ff176ca4c36035ec404",
     "screenshot_source": "docs/assets/readme/workbench-desktop-work-detail.jpg",
     "screenshot_source_sha256": "F001CC8C702431CB9EE64100A70E04310B061505797D09265B4CC52DD2188B8A",
     "cropped_screenshot": "docs/assets/readme/workbench-social-screenshot.jpg",
@@ -19,29 +19,30 @@
   "screenshots": [
     {
       "path": "docs/assets/readme/workbench-desktop-dashboard.jpg",
-      "sha256": "30D0F5657CACD3340E095290F7429A5100A038001B2B77B295589D57F0391CC6",
+      "sha256": "30d0f5657cacd3340e095290f7429a5100a038001b2b77b295589d57f0391cc6",
       "provenance": "Windows x64 desktop capture from local Workbench source build, disposable Core conformance fixture; recorded in evidence/WI074-RPS-020-readme-evidence-2026-10-21.json."
     },
     {
       "path": "docs/assets/readme/workbench-desktop-work-detail.jpg",
-      "sha256": "F001CC8C702431CB9EE64100A70E04310B061505797D09265B4CC52DD2188B8A",
+      "sha256": "f001cc8c702431cb9ee64100a70e04310b061505797d09265b4cc52dd2188b8a",
       "provenance": "Windows x64 desktop capture from local Workbench source build, disposable Core conformance fixture; recorded in evidence/WI074-RPS-020-readme-evidence-2026-10-21.json."
     },
     {
       "path": "docs/assets/readme/workbench-desktop-graph.jpg",
-      "sha256": "60A3C167027878B3018F7DACBF32088DFE3B07A96DA33B05B22DF4B908F9AF31",
+      "sha256": "60a3c167027878b3018f7dacbf32088dfe3b07a96da33b05b22df4b908f9af31",
       "provenance": "Windows x64 desktop capture from local Workbench source build, disposable Core conformance fixture; recorded in evidence/WI074-RPS-020-readme-evidence-2026-10-21.json."
     },
     {
       "path": "docs/assets/readme/plan-review-android-api35.png",
-      "sha256": "43EC989D558EE554F2A698525EA7C7C69966765DD8E2F40DC4F36279B147F041",
+      "sha256": "43ec989d558ee554f2a698525ea7c7c69966765dd8e2f40dc4f36279b147f041",
       "provenance": "Sanitized crop of the recorded Android API 35 x86_64 native acceptance run, as described in evidence/WI074-RPS-020-readme-evidence-2026-10-21.json."
     }
   ],
   "presentation_notes": [
-    "The previously recorded validation screenshot is retained unchanged in the repository as evidence but omitted from the default README gallery to reduce redundancy.",
-    "The new social preview is an image asset prepared for owner upload; it is not confirmed active in GitHub repository settings.",
-    "No new live product screenshot was captured because the local demonstration application was not running during this presentation pass."
+    "The opening README image is the genuine Windows x64 desktop dashboard capture from a local source build and disposable Core conformance fixture; the screenshot includes the app navigation and synthetic repository path.",
+    "The detailed work-item, validation, and graph captures are shown in the README tour; all are genuine native captures with source provenance recorded in the README evidence manifest.",
+    "The Android plan-review screenshot remains a curated crop of recorded API 35 x86_64 evidence; platform scope is defined by the linked native acceptance record.",
+    "The social preview PNG is prepared for owner upload. Active GitHub settings must be verified separately."
   ],
   "design_system": {
     "ink": "#0c1726",
@@ -56,6 +57,6 @@
     "source_sha256": "F001CC8C702431CB9EE64100A70E04310B061505797D09265B4CC52DD2188B8A",
     "sha256": "BD1C6505769B069EB6888025A3402ED81657662801B741EB396221F65580C522",
     "crop": "x=640..1330, y=300..715",
-    "purpose": "Opening README screenshot crop focused on a genuine record detail view; cursor halo and window chrome excluded."
+    "purpose": "Curated detail crop retained as an alternate crop; the opening README image is now the uncropped dashboard."
   }
 }
