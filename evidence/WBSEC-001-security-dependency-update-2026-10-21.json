@@ -1,0 +1,35 @@
+{
+  "format": "repopact-validation-evidence-v1",
+  "id": "WBSEC-001-security-dependency-update-2026-10-21",
+  "work_item": "001",
+  "repository": "ForgeWireLabs/repopact-workbench",
+  "base_revision": "57bcde6b558fc050384fffc1ca0abf96634c8b49",
+  "scope": "application, evidence",
+  "recorded_at": "2026-10-21T18:30:00Z",
+  "changes": {
+    "vite": {"from": "8.2.2", "to": "8.2.4", "path": "devDependencies.vite"},
+    "source_map_js": {"from": "1.2.1", "to": "1.2.2", "paths": ["vite > postcss", "jsdom > @asamuzakjp/dom-selector > css-tree"]},
+    "runtime_dependencies_changed": false,
+    "core_revision_pin_changed": false
+  },
+  "advisories_reviewed": [
+    {"id": "GHSA-68fv-2mgg-jv7q", "package": "source-map-js", "severity": "high", "fixed": "1.2.2", "risk": "crafted indexed source map offsets can synchronously block the event loop"},
+    {"id": "GHSA-587h-7wmj-h5pm", "package": "launch-editor via Vite", "severity": "high", "fixed_vite": "8.2.4", "risk": "Windows path-check bypass can enable command execution if an attacker controls the editor-file argument"},
+    {"id": "GHSA-698v-4r3x-3vcv", "package": "launch-editor via Vite", "severity": "moderate", "fixed_vite": "8.2.4", "risk": "Windows percent expansion may cause unintended environment expansion"},
+    {"id": "GHSA-r825-w8mm-5pxw", "package": "launch-editor via Vite", "severity": "moderate", "fixed_vite": "8.2.4", "risk": "crafted file paths may be interpreted as editor CLI flags"}
+  ],
+  "commands": [
+    {"command": "npm install --save-dev --save-exact vite@8.2.4", "result": "passed; changed one direct dependency and audited 123 packages"},
+    {"command": "npm update source-map-js --save-dev", "result": "passed; resolved source-map-js 1.2.2"},
+    {"command": "npm audit", "result": "passed; 0 vulnerabilities across 176 dependencies"},
+    {"command": "npm audit --omit=dev --audit-level=high", "result": "passed; 0 production vulnerabilities"},
+    {"command": "npm run typecheck", "result": "passed"},
+    {"command": "npm test -- --run", "result": "passed; 8 files, 38 tests"},
+    {"command": "npm run build", "result": "passed; Vite 8.2.4 production build"},
+    {"command": "npm run types:check", "result": "passed; generated API type check; generated file unchanged"},
+    {"command": "cargo test --workspace --all-targets --locked", "result": "passed; all active tests passed; ignored tests remained ignored"},
+    {"command": "git diff --check", "result": "passed"}
+  ],
+  "limitations": ["The Vite editor advisories require development-server/editor conditions; this review did not demonstrate exploitability in Workbench.", "Ignored Rust tests were not run by the requested cargo test invocation."],
+  "criteria": {"WBSEC-001": "satisfied", "WBSEC-002": "satisfied", "WBSEC-003": "satisfied"}
+}
