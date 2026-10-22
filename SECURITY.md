@@ -10,17 +10,13 @@ for Core's package and semantic-engine scope; it does not replace this policy.
 
 ## Reporting a vulnerability
 
-Report suspected vulnerabilities privately through GitHub's **Report a
-vulnerability** feature for this repository when it is available. If private
-reporting is unavailable, contact the maintainers through the ForgeWire Labs
-organization profile. Do not post secrets, credentials, private repository
-data, or uncoordinated exploit details in a public issue. This project does not
-promise a response or remediation time.
+Use the [private vulnerability reporting form](https://github.com/ForgeWireLabs/repopact-workbench/security/advisories/new) to
+report suspected Workbench security issues. GitHub private vulnerability
+reporting is enabled for this repository. Do not report suspected
+vulnerabilities through public issues or post credentials, tokens, or private
+repository data there.
 
-Include the affected Workbench revision and platform, relevant input and
-workflow, expected security property, and reproducible impact where safe.
-Ordinary feature requests and reproducible non-sensitive bugs can be reported
-through [GitHub Issues](https://github.com/ForgeWireLabs/repopact-workbench/issues).
+Include the affected Workbench revision and platform, relevant input and workflow, expected security property, and reproducible impact when safe to share. Ordinary feature requests and reproducible non-sensitive bugs can be reported through [GitHub Issues](https://github.com/ForgeWireLabs/repopact-workbench/issues).
 
 ## Security-sensitive surfaces
 
