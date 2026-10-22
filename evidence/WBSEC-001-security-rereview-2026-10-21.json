@@ -1,0 +1,49 @@
+{
+  "format": "repopact-validation-evidence-v1",
+  "id": "WBSEC-001-security-rereview-2026-10-21",
+  "work_item": "001",
+  "repository": "ForgeWireLabs/repopact-workbench",
+  "base_revision": "57bcde6b558fc050384fffc1ca0abf96634c8b49",
+  "candidate_revision": "5049136e698a947bda1d3bfc7d57f5d59d0ea57e",
+  "scope": "application, evidence, governance",
+  "recorded_at": "2026-10-21T20:45:00Z",
+  "changes": {
+    "vite": {"version": "8.2.4", "status": "unchanged from security PR"},
+    "source_map_js": {"version": "1.2.2", "status": "unchanged from security PR"},
+    "vitest": {"from": "5.0.0", "to": "5.0.5", "path": "devDependencies.vitest"},
+    "vitest_mocker": {"from": "5.0.0", "to": "5.0.5", "path": "vitest dependency"},
+    "runtime_dependencies_changed": false,
+    "core_revision_pin_changed": false
+  },
+  "advisories_reviewed": [
+    {"id": "GHSA-qxg6-89mg-rqv8", "package": "@vitest/mocker", "severity": "moderate", "affected": ">=5.0.0-beta.1 <5.0.3", "first_fixed": "5.0.3", "published": "2026-10-21T19:54:26Z"},
+    {"id": "GHSA-xp26-3454-mjgp", "package": "@vitest/mocker", "severity": "moderate", "affected": ">=5.0.0-rc.2 <5.0.3", "first_fixed": "5.0.3", "published": "2026-10-21T19:48:38Z"}
+  ],
+  "dependency_resolution": {
+    "node": "v24.15.0",
+    "npm": "11.12.1",
+    "vite": "8.2.4",
+    "source_map_js": "1.2.2 via vite > postcss and jsdom > @asamuzakjp/dom-selector > css-tree",
+    "vitest": "5.0.5",
+    "vitest_mocker": "5.0.5",
+    "lockfile_review": "package-lock.json records matching exact Vite and Vitest pins and patched transitive packages; Vitest upgrade changes only development dependencies"
+  },
+  "commands": [
+    {"command": "npm ci", "result": "passed; clean lockfile install, audited 121 packages, zero vulnerabilities"},
+    {"command": "npm audit", "result": "passed; zero vulnerabilities"},
+    {"command": "npm audit --omit=dev --audit-level=high", "result": "passed; zero production vulnerabilities"},
+    {"command": "npm ls vite source-map-js vitest @vitest/mocker", "result": "passed; Vite 8.2.4, source-map-js 1.2.2, Vitest 5.0.5, @vitest/mocker 5.0.5"},
+    {"command": "npm run typecheck", "result": "passed"},
+    {"command": "npm test -- --run", "result": "passed; 8 files, 38 tests"},
+    {"command": "npm run build", "result": "passed; Vite 8.2.4 production build"},
+    {"command": "npm run types:check", "result": "passed; generated API type check; generated file unchanged"},
+    {"command": "cargo test --workspace --all-targets --locked", "result": "passed; active tests passed, ignored tests remained ignored"},
+    {"command": "git diff --check", "result": "passed"}
+  ],
+  "criteria": {"WBSEC-001": "satisfied", "WBSEC-002": "satisfied", "WBSEC-003": "satisfied"},
+  "limitations": [
+    "The advisories affect development tooling; no exploitability in Workbench itself was demonstrated.",
+    "Ignored Rust tests were not run by the required cargo test invocation.",
+    "This re-review was recorded on the Windows host; it makes no additional platform support claims."
+  ]
+}

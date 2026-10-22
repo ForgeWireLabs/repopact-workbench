@@ -21,7 +21,8 @@
       "text": "Update Vite and the transitive source-map-js resolution to fixed versions compatible with the existing plugin and Node runtime; preserve the exact Core pin and production dependency set.",
       "state": "satisfied",
       "evidence": [
-        "WBSEC-001-security-dependency-update-2026-10-21"
+        "WBSEC-001-security-dependency-update-2026-10-21",
+        "WBSEC-001-security-rereview-2026-10-21"
       ]
     },
     {
@@ -29,7 +30,8 @@
       "text": "Run the full and production-only npm audits and record the advisories, resolved versions, dependency paths, and remaining findings.",
       "state": "satisfied",
       "evidence": [
-        "WBSEC-001-security-dependency-update-2026-10-21"
+        "WBSEC-001-security-dependency-update-2026-10-21",
+        "WBSEC-001-security-rereview-2026-10-21"
       ]
     },
     {
@@ -37,7 +39,16 @@
       "text": "Run frontend typecheck, frontend tests, production frontend build, generated API type check, and the locked Rust workspace tests after the lockfile update.",
       "state": "satisfied",
       "evidence": [
-        "WBSEC-001-security-dependency-update-2026-10-21"
+        "WBSEC-001-security-dependency-update-2026-10-21",
+        "WBSEC-001-security-rereview-2026-10-21"
+      ]
+    },
+    {
+      "id": "WBSEC-004",
+      "text": "Resolve the two newly disclosed moderate @vitest/mocker advisories applicable to Vitest 5.0.0 and rerun clean-install security and regression checks.",
+      "state": "satisfied",
+      "evidence": [
+        "WBSEC-001-security-rereview-2026-10-21"
       ]
     }
   ],
