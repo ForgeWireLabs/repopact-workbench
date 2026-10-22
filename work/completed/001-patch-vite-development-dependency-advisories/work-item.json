@@ -2,7 +2,7 @@
   "$schema": "https://raw.githubusercontent.com/ForgeWireLabs/repopact-core/1c1f32ae619e8135227acfa87393696ff608951c/repopact/schemas/work-item.schema.json",
   "id": "001",
   "title": "Patch vulnerable Workbench Vite development dependencies",
-  "status": "active",
+  "status": "completed",
   "owner_scope": "application",
   "affected_scopes": [
     "application",
@@ -22,7 +22,8 @@
       "state": "satisfied",
       "evidence": [
         "WBSEC-001-security-dependency-update-2026-10-21",
-        "WBSEC-001-security-rereview-2026-10-21"
+        "WBSEC-001-security-rereview-2026-10-21",
+        "WBSEC-001-post-merge-2026-10-22"
       ]
     },
     {
@@ -31,7 +32,8 @@
       "state": "satisfied",
       "evidence": [
         "WBSEC-001-security-dependency-update-2026-10-21",
-        "WBSEC-001-security-rereview-2026-10-21"
+        "WBSEC-001-security-rereview-2026-10-21",
+        "WBSEC-001-post-merge-2026-10-22"
       ]
     },
     {
@@ -40,7 +42,8 @@
       "state": "satisfied",
       "evidence": [
         "WBSEC-001-security-dependency-update-2026-10-21",
-        "WBSEC-001-security-rereview-2026-10-21"
+        "WBSEC-001-security-rereview-2026-10-21",
+        "WBSEC-001-post-merge-2026-10-22"
       ]
     },
     {
@@ -48,10 +51,11 @@
       "text": "Resolve the two newly disclosed moderate @vitest/mocker advisories applicable to Vitest 5.0.0 and rerun clean-install security and regression checks.",
       "state": "satisfied",
       "evidence": [
-        "WBSEC-001-security-rereview-2026-10-21"
+        "WBSEC-001-security-rereview-2026-10-21",
+        "WBSEC-001-post-merge-2026-10-22"
       ]
     }
   ],
   "created": "2026-10-21",
-  "updated": "2026-10-21"
+  "updated": "2026-10-22"
 }

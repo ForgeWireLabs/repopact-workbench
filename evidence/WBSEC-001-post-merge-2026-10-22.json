@@ -1,0 +1,35 @@
+{
+  "format": "repopact-validation-evidence-v1",
+  "id": "WBSEC-001-post-merge-2026-10-22",
+  "work_item": "001",
+  "repository": "ForgeWireLabs/repopact-workbench",
+  "base_revision": "4973b826d41a65087a47bbc2e70ff12ff586b58f",
+  "candidate_revision": "4973b826d41a65087a47bbc2e70ff12ff586b58f",
+  "scope": "application, evidence, governance",
+  "recorded_at": "2026-10-22T04:10:00Z",
+  "changes": {
+    "vite": "8.2.4",
+    "source_map_js": "1.2.2",
+    "vitest": "5.0.5",
+    "vitest_mocker": "5.0.5",
+    "runtime_dependencies_changed": false,
+    "core_revision_pin_changed": false
+  },
+  "commands": [
+    {"command": "npm ci", "result": "passed; clean install, zero vulnerabilities"},
+    {"command": "npm audit", "result": "passed; zero vulnerabilities"},
+    {"command": "npm audit --omit=dev --audit-level=high", "result": "passed; zero production vulnerabilities"},
+    {"command": "npm run typecheck", "result": "passed"},
+    {"command": "npm test -- --run", "result": "passed; 8 files and 38 tests"},
+    {"command": "npm run build", "result": "passed"},
+    {"command": "npm run types:check", "result": "passed; generated API types unchanged"},
+    {"command": "cargo test --workspace --all-targets --locked", "result": "passed; ignored tests remained ignored"},
+    {"command": "git diff --check", "result": "passed"}
+  ],
+  "merge": {
+    "pull_request": "https://github.com/ForgeWireLabs/repopact-workbench/pull/3",
+    "merge_commit": "40999d9b0ec382cb642651f4221767adf5d31f7c",
+    "post_merge_main": "4973b826d41a65087a47bbc2e70ff12ff586b58f"
+  },
+  "limitations": ["Ignored Rust tests were not run by the required cargo test invocation."]
+}
