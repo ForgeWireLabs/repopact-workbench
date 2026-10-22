@@ -1,0 +1,61 @@
+{
+  "format": "repopact-visual-assets-v1",
+  "repository": "ForgeWireLabs/repopact-workbench",
+  "source_readme_revision": "eeeef82cc30fa7c40ecdb1c1e2e662f2e2109e1d",
+  "social_preview": {
+    "svg": "docs/assets/readme/workbench-social-preview.svg",
+    "png": "docs/assets/readme/workbench-social-preview.png",
+    "size": [
+      1280,
+      640
+    ],
+    "sha256": "C4B2B30C71E34CEA5D50FEAF565E13A421408D17A2C99FF176CA4C36035EC404",
+    "screenshot_source": "docs/assets/readme/workbench-desktop-work-detail.jpg",
+    "screenshot_source_sha256": "F001CC8C702431CB9EE64100A70E04310B061505797D09265B4CC52DD2188B8A",
+    "cropped_screenshot": "docs/assets/readme/workbench-social-screenshot.jpg",
+    "cropped_screenshot_sha256": "785E27017690A537196646BF43227DBF242C2CF6E612FD46721FD4313D058880",
+    "crop": "Social card crop from the original screenshot at x=640..1330, y=300..650; excludes window chrome, cursor halo, and partial relationship text. The larger README work-item crop uses x=640..1330, y=300..715."
+  },
+  "screenshots": [
+    {
+      "path": "docs/assets/readme/workbench-desktop-dashboard.jpg",
+      "sha256": "30D0F5657CACD3340E095290F7429A5100A038001B2B77B295589D57F0391CC6",
+      "provenance": "Windows x64 desktop capture from local Workbench source build, disposable Core conformance fixture; recorded in evidence/WI074-RPS-020-readme-evidence-2026-10-21.json."
+    },
+    {
+      "path": "docs/assets/readme/workbench-desktop-work-detail.jpg",
+      "sha256": "F001CC8C702431CB9EE64100A70E04310B061505797D09265B4CC52DD2188B8A",
+      "provenance": "Windows x64 desktop capture from local Workbench source build, disposable Core conformance fixture; recorded in evidence/WI074-RPS-020-readme-evidence-2026-10-21.json."
+    },
+    {
+      "path": "docs/assets/readme/workbench-desktop-graph.jpg",
+      "sha256": "60A3C167027878B3018F7DACBF32088DFE3B07A96DA33B05B22DF4B908F9AF31",
+      "provenance": "Windows x64 desktop capture from local Workbench source build, disposable Core conformance fixture; recorded in evidence/WI074-RPS-020-readme-evidence-2026-10-21.json."
+    },
+    {
+      "path": "docs/assets/readme/plan-review-android-api35.png",
+      "sha256": "43EC989D558EE554F2A698525EA7C7C69966765DD8E2F40DC4F36279B147F041",
+      "provenance": "Sanitized crop of the recorded Android API 35 x86_64 native acceptance run, as described in evidence/WI074-RPS-020-readme-evidence-2026-10-21.json."
+    }
+  ],
+  "presentation_notes": [
+    "The previously recorded validation screenshot is retained unchanged in the repository as evidence but omitted from the default README gallery to reduce redundancy.",
+    "The new social preview is an image asset prepared for owner upload; it is not confirmed active in GitHub repository settings.",
+    "No new live product screenshot was captured because the local demonstration application was not running during this presentation pass."
+  ],
+  "design_system": {
+    "ink": "#0c1726",
+    "slate": "#172c42",
+    "teal": "#58bca8",
+    "paper": "#f4f7fa",
+    "line": "#3a5266"
+  },
+  "readme_crop": {
+    "path": "docs/assets/readme/workbench-work-item-detail-crop.jpg",
+    "source": "docs/assets/readme/workbench-desktop-work-detail.jpg",
+    "source_sha256": "F001CC8C702431CB9EE64100A70E04310B061505797D09265B4CC52DD2188B8A",
+    "sha256": "BD1C6505769B069EB6888025A3402ED81657662801B741EB396221F65580C522",
+    "crop": "x=640..1330, y=300..715",
+    "purpose": "Opening README screenshot crop focused on a genuine record detail view; cursor halo and window chrome excluded."
+  }
+}

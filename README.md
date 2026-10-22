@@ -1,14 +1,18 @@
 # RepoPact Workbench
 
-**Explore a governed repository, understand what needs attention, and review supported changes in a native application.**
+**Explore a governed repository, understand what needs attention, and review supported changes.**
 
-Workbench gives developers a visual way to inspect RepoPact work, decisions, evidence, validation, and repository relationships. It keeps the human review step visible when preparing supported changes.
+Workbench is the native interface for exploring RepoPact records and preparing supported changes. It brings work, decisions, evidence, validation, and repository relationships into one reviewable workflow.
 
-![RepoPact Workbench running as a native Windows desktop application with a disposable demonstration repository open and its dashboard validated.](docs/assets/readme/workbench-desktop-dashboard.jpg)
+[What you can do](#what-you-can-do) · [Reviewable workflow](#a-reviewable-workflow) · [Get started](#get-started) · [Core relationship](#workbench-and-core)
 
-*Windows x64 desktop capture from a local source build. The application is running against a disposable copy of the Core conformance fixture; no private repository, credentials, or session tokens are shown.*
+![Cropped genuine Workbench work-item detail showing lifecycle status, owner scope, an evidence-linked criterion, and record relationships.](docs/assets/readme/workbench-work-item-detail-crop.jpg)
 
-[What you can do](#what-you-can-do) · [Workflow](#a-reviewable-workflow) · [Get started](#get-started) · [Core relationship](#workbench-and-core)
+*Genuine Windows x64 capture from a local source build and a disposable copy of the Core conformance fixture. No private repository, credentials, or session tokens are shown.*
+
+The capture is cropped to the record panel for legibility; the uncropped capture and image provenance are preserved in the asset inventory.
+
+Workbench presents repository state for people to inspect; the versioned records remain authoritative. [RepoPact Core](https://github.com/ForgeWireLabs/repopact-core) owns their semantics and validation.
 
 ## What you can do
 
@@ -33,28 +37,24 @@ Workbench's views help people navigate the repository. The versioned records rem
 6. **Apply or discard.** Applying is an explicit action. Plans are opaque and session-bound at the native/Core boundary; stale plans are rejected.
 7. **Validate.** A successful apply is followed by Core validation. The resulting records and evidence in the repository are the durable state.
 
-**Inspect a work item and its evidence**
-
-![Workbench work-item detail showing lifecycle status, owner scope, an evidence-linked criterion, and record relationships.](docs/assets/readme/workbench-desktop-work-detail.jpg)
-
-*Genuine Windows x64 capture from the disposable demonstration repository described above.*
-
 ### See the application
 
-The desktop gallery uses genuine Windows x64 captures from the same local source build and disposable repository as the hero. The fixture was not changed to produce the images.
+The dashboard is the starting point for the desktop tour. Open the gallery for validation and relationship views.
 
 <details>
 <summary>Open the desktop workflow gallery</summary>
 
-**Check canonical validation**
+![Workbench dashboard showing the active disposable repository, healthy session, and counts for work, evidence, decisions, and graph edges.](docs/assets/readme/workbench-desktop-dashboard.jpg)
 
-![Workbench validation page showing the exact disposable repository snapshot has no reported diagnostics.](docs/assets/readme/workbench-desktop-validation.jpg)
+*Windows x64 desktop capture from a local source build.*
 
 **Explore repository relationships**
 
 ![Workbench graph relationship table showing record links and their source paths.](docs/assets/readme/workbench-desktop-graph.jpg)
 
 </details>
+
+[GitHub social-preview image, 1280 × 640](docs/assets/readme/workbench-social-preview.png) · [Visual asset inventory and provenance](docs/assets/readme/visual-asset-inventory.json)
 
 **Android plan review (secondary platform example)**
 
