@@ -126,7 +126,7 @@ npm run build
 npm run types:check
 ```
 
-Read [CONTRIBUTING.md](https://github.com/ForgeWireLabs/repopact-core/blob/main/CONTRIBUTING.md) and the repository's [agent contract](AGENTS.md) before contributing. For feature-specific details, see the [documentation guides](docs/guides/), including [GitHub snapshot import](docs/guides/github-snapshot-import.md) and [GitHub App setup](docs/guides/github-app-setup.md). Report issues through [GitHub Issues](https://github.com/ForgeWireLabs/repopact-workbench/issues).
+Start at the [Workbench documentation index](docs/README.md), then read this repository's [contribution guide](CONTRIBUTING.md), [security policy](SECURITY.md), and [agent contract](AGENTS.md). The [Core contribution guide](https://github.com/ForgeWireLabs/repopact-core/blob/main/CONTRIBUTING.md) covers Core itself; it does not replace Workbench's application-specific process. For feature details, see [GitHub snapshot import](docs/guides/github-snapshot-import.md) and [GitHub App setup](docs/guides/github-app-setup.md). Report ordinary bugs through [GitHub Issues](https://github.com/ForgeWireLabs/repopact-workbench/issues); use the private channel described in `SECURITY.md` for suspected vulnerabilities.
 
 ## Limitations and support
 

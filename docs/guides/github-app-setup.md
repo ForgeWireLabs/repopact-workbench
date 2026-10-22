@@ -1,7 +1,14 @@
 # GitHub App setup for RepoPact remote repository import (WI067)
 
-This document specifies the exact GitHub App configuration Decision 0062
-requires. Registering the app is a **RepoPact/ForgeWire Labs release
+This is a maintainer-facing registration specification, not a statement that
+the production GitHub App is currently registered or that authorization is
+available in a published Workbench build. The latest linked WI067 record says
+no production app was registered as of **2026-09-16**; no newer registration
+evidence is present in this source snapshot, and the live state has not been
+independently checked. The configuration contract is in Core [Decision 0062](https://github.com/ForgeWireLabs/repopact-core/blob/main/decisions/0062-browser-redirect-pkce-authorization-replaces-device-flow.md)
+and the shared provider boundary is in [Decision 0061](https://github.com/ForgeWireLabs/repopact-core/blob/main/decisions/0061-remote-repository-providers-materialize-immutable-snapshots-through-native-owned-authorization-and-the-existing-workspace-pipeline.md).
+
+Registering the app is a **RepoPact/ForgeWire Labs release
 concern**, not an end-user concern: an installed RepoPact user never sees,
 enters, or is asked to configure a client ID, a client secret, an app
 slug, or anything else on this page. An operator follows this once to
@@ -27,6 +34,8 @@ architect around a belief that this value is confidential, and do not
 build (or ask for) any mechanism that treats possessing it as proof of a
 genuine RepoPact binary.
 
+This follows GitHub's [public-client guidance](https://docs.github.com/en/apps/creating-github-apps/about-creating-github-apps/best-practices-for-creating-a-github-app): native clients cannot keep a client secret confidential and should use PKCE.
+
 The values that are genuinely secret in this architecture are each user's
 own GitHub access and refresh tokens, which RepoPact never bundles, never
 compiles in, and stores only in that user's OS-protected credential
@@ -41,9 +50,10 @@ etc.) after they personally authorize the app.
 
 ## Identifying and authorizing users (web application flow)
 
-- **Callback URL(s)**: register **both** of the following. GitHub permits
-  multiple callback URLs on one App; desktop and Android do not need to
-  use the same transport.
+- **Callback URL(s)**: register **both** of the following. GitHub documents
+  multiple callback URLs and selecting the runtime redirect with
+  `redirect_uri` in its [callback URL reference](https://docs.github.com/en/apps/creating-github-apps/registering-a-github-app/about-the-user-authorization-callback-url).
+  Desktop and Android do not need to use the same transport.
   - `http://127.0.0.1/repopact/github/callback` -- the desktop native
     loopback callback base. RepoPact binds an ephemeral port on
     `127.0.0.1` for each authorization attempt and sends the full runtime
@@ -100,8 +110,8 @@ repository permission matrix.
 
 - **Expire user authorization tokens**: **required, ON.** RepoPact relies
   on the documented ~8-hour access token / ~6-month refresh token
-  expiration model; do not disable expiration for implementation
-  convenience.
+  expiration model ([GitHub token refresh guidance](https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/refreshing-user-access-tokens));
+  do not disable expiration for implementation convenience.
 
 ## Webhooks
 
@@ -160,11 +170,14 @@ normal product setup. A development build with neither source configured
 truthfully reports "GitHub integration is not configured in this
 development build."
 
-## Status
+## Recorded registration status
 
-As of this checkpoint, no GitHub App has been registered yet. This
-document exists so an operator can register one using the exact contract
-above; the next checkpoint after this one is the operator registering the
-real app and handing back the three values, followed by a live-
-authorization checkpoint that exercises real Connect GitHub / real browser
-redirect / real repository import end to end.
+The latest authoritative status available in the Core WI067 record is dated
+2026-09-16 and says that no production GitHub App had been registered at that
+checkpoint. No later registration evidence is linked from this Workbench
+source snapshot; maintainers must update the status from an operator-owned
+record before describing authenticated integration as available. Do not store
+the app's client values, user tokens, private keys, or screenshots of settings
+in this repository. See [WI067](https://github.com/ForgeWireLabs/repopact-core/blob/main/work/active/067-github-repository-provider-secure-user-authorization-and-remote-repository-import/README.md)
+and the [snapshot-import guide](github-snapshot-import.md) for implementation
+and runtime evidence boundaries.

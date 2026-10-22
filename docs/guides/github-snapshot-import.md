@@ -1,10 +1,13 @@
 # GitHub repository snapshot import (WI067)
 
-This documents what is concretely implemented as of WI067 Checkpoint D --
-not a roadmap or aspiration. See `decisions/0061-*.md` for the
-architecture decision this behavior implements, and
-`docs/guides/github-app-setup.md` for the GitHub App registration this
-feature depends on.
+This guide describes the provider and snapshot-import implementation recorded
+in WI067. Its checkpoint evidence is historical and does not mean every
+integration gate is currently open: the latest tracked status says a production
+GitHub App was not registered at the **2026-09-16** checkpoint, and no newer
+registration evidence is present in this source snapshot. The live registration
+state has not been independently checked here. See Core [Decision 0061](https://github.com/ForgeWireLabs/repopact-core/blob/main/decisions/0061-remote-repository-providers-materialize-immutable-snapshots-through-native-owned-authorization-and-the-existing-workspace-pipeline.md)
+for the architecture this behavior implements, and
+[GitHub App setup](github-app-setup.md) for the registration contract.
 
 ## What this is
 
@@ -89,13 +92,14 @@ evidence, or a log.
 Access and refresh tokens are stored only through the real OS-protected
 credential facility for the running platform:
 
-- **Windows** (this feature's currently supported desktop platform):
-  Windows Credential Manager, via the `keyring` crate. Proven with real
-  round-trip and cross-process persistence tests.
+- **Windows**: Windows Credential Manager, via the `keyring` crate. Runtime
+  round-trip and cross-process persistence tests were recorded for the
+  2026-09-16 checkpoint. This is credential-backend evidence, not a general
+  Workbench support declaration.
 - **macOS/iOS, Linux**: the same `CredentialStore` abstraction targets
   Keychain and Secret Service/libsecret respectively via the same
-  `keyring` crate, but this has not been exercised at runtime on those
-  platforms as of this checkpoint.
+  `keyring` crate, but runtime behavior on these platforms was not exercised
+  in the recorded checkpoint. See the [current platform matrix](../../README.md#platform-availability-and-evidence).
 - **Android**: a dedicated `repopact-mobile-credential` crate implements
   the same `CredentialStore` trait against a real Android Keystore-backed
   encryption key. Android Keystore owns the cryptographic key material,
@@ -117,36 +121,40 @@ credential facility for the running platform:
   leakage, and every failure mode above) rather than unit tests alone.
   The tested emulator's Keystore implementation is software-backed
   (`insideSecureHardware=false`); no hardware/StrongBox backing is
-  claimed. `GitHubProvider`'s own connection flow is not yet wired to run
-  on Android -- that remains a separate, tracked integration step (see
-  "What is still pending" below); this checkpoint proves the credential
-  backend itself as a production-quality, drop-in `CredentialStore`
-  implementation.
+  claimed. This is evidence for the credential backend only. The current
+  `src-tauri/src/lib.rs` registers GitHub provider commands only for
+  non-Android targets; Android repository import/export through the system
+  document picker is separate.
 
 ## Operator gate: GitHub App registration
 
-No GitHub App has been registered as of this checkpoint. Live browser-
-redirect-with-PKCE authorization (Decision 0062 -- interactive
-authorization is no longer device flow), private-repository browsing, and
-organization-installation browsing are all blocked on an operator
-completing the registration steps in `docs/guides/github-app-setup.md` and
-RepoPact's release configuration compiling in the resulting client ID,
-public client secret, and app slug (`GitHubAppRegistration`, never an
-end-user-set environment variable). Public-repository snapshot import (ref
-resolution and archive download) requires no authentication at all and has
-been proven live against `octocat/Hello-World`.
+The canonical Core WI067 record and its latest linked checkpoint evidence say
+that no production GitHub App had been registered as of **2026-09-16**. This
+source snapshot contains no newer registration evidence; current live
+registration status has not been independently checked. Private/organization
+browsing and authenticated end-to-end flows therefore remain unconfirmed here.
+An operator-owned record must update the status before these flows are
+presented as available. See Core [Decision 0062](https://github.com/ForgeWireLabs/repopact-core/blob/main/decisions/0062-browser-redirect-pkce-authorization-replaces-device-flow.md)
+for the browser-redirect-with-PKCE design and [WI067](https://github.com/ForgeWireLabs/repopact-core/blob/main/work/active/067-github-repository-provider-secure-user-authorization-and-remote-repository-import/README.md)
+for the authoritative work record.
+
+When an official build is configured, its build pipeline supplies the GitHub
+client ID, public client secret, and app slug as compile-time application
+metadata. End users do not enter these values. Public-repository ref resolution
+and archive download were proven without authentication against
+`octocat/Hello-World` in historical checkpoint evidence; this does not prove
+that an official production build is currently configured.
 
 ## What is still pending
 
 - Live authorized browsing of private repositories and organization
-  installations (GH-005) -- requires the operator gate above.
+  installations (GH-005) -- pending in the latest recorded WI067 status; see
+  the registration caveat above.
 - Full desktop *and* Android end-to-end authenticated runtime proof
-  (GH-012) -- requires the operator gate above *and* wiring
-  `GitHubProvider`/the GitHub connection command surface to actually run
-  on Android (today it is still desktop-only; the Android protected
-  credential store it would depend on is now implemented and proven, but
-  the connection UI/commands themselves have not been extended to
-  Android in this checkpoint).
+  (GH-012) -- pending in the latest recorded WI067 status. The checked-in
+  `src-tauri/src/lib.rs` currently registers GitHub provider commands only
+  for non-Android targets. Android credential storage and Android repository
+  import/export do not by themselves establish the GitHub connection flow.
 - iOS has not been evaluated at all for this feature.
 
 ## Provider extension
