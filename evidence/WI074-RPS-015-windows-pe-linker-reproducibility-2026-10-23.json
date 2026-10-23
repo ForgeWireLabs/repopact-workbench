@@ -1,0 +1,80 @@
+{
+  "format": "workbench-validation-evidence-v1",
+  "evidence_id": "wi074-rps-015-windows-pe-linker-reproducibility-2026-10-23",
+  "work_item": "WI074",
+  "requirement": "RPS-015",
+  "recorded_at": "2026-10-23T22:01:41Z",
+  "baseline_commit": "74462c67021a2ec28a6b46b3e7240d2545113a82",
+  "implementation_commit": "39e0524fcd4fffe7f2a12ad61d25f13a9f7c7c8e",
+  "result": "partial; acceptance remains pending",
+  "original_variance": {
+    "source_export_sha256": "2B9A0146E362DEA7E48CA40A91D749BC2A5D152F481CFBB97673A321BA020EC0",
+    "executable_bytes": 26998784,
+    "executable_sha256": [
+      "6B8E9FFD8ACE9192B9CF4E07947D74CF8403EFB5E513F24FF5B8CD08F9D3E491",
+      "71A278754E548A187F742124D4A26E940BBD56278C46C77BFE0F224D6266F99B",
+      "601C05584ABBBAB18CE83C13629DB5A26957209FAFAC4C14824D876EF9288838"
+    ],
+    "binary_comparison": "Two retained binaries differed in 24 bytes: two bytes in the PE COFF TimeDateStamp, two bytes in each of three .rdata debug-directory timestamps, and the 16-byte RSDS CodeView/PDB GUID. PE timestamps matched their link times. .text, .data, .pdata, .rsrc and .reloc matched; the PDB path was the stable basename repopact_desktop.pdb; resources matched.",
+    "root_cause": "MSVC link.exe defaults embed link-time wall-clock timestamps and a newly generated CodeView identity. The observed differences were linker metadata, not source-path, resource, or application-section changes."
+  },
+  "environment": {
+    "os": "Windows 10 Pro 10.0.19045",
+    "rustc_cargo": "1.96.0",
+    "target": "x86_64-pc-windows-msvc",
+    "msvc_toolset_directory": "14.44.35207",
+    "link_exe_file_product_version": "14.44.35225.0",
+    "llvm": "22.1.2",
+    "node": "24.15.0",
+    "npm": "11.12.1",
+    "python": "3.12.4",
+    "ordinary_environment": "No RUSTFLAGS, target rustflags, or SOURCE_DATE_EPOCH was set. The original Cargo build script only invoked tauri_build::build()."
+  },
+  "correction": {
+    "file": "src-tauri/build.rs",
+    "change": "Emit cargo:rustc-link-arg-bin=repopact-desktop=/Brepro only for targets ending in -windows-msvc. No post-build rewriting or normalization is used.",
+    "scope": "Windows MSVC repopact-desktop executable only; shared Tauri library and non-MSVC targets are unchanged."
+  },
+  "checks": [
+    {
+      "platform": "Windows 10 x64 MSVC",
+      "command": "npm ci --ignore-scripts",
+      "result": "passed",
+      "details": "Installed locked frontend dependencies; npm reported 0 vulnerabilities."
+    },
+    {
+      "platform": "Windows 10 x64 MSVC",
+      "command": "npm run build",
+      "result": "passed",
+      "details": "TypeScript checking and Vite production build passed."
+    },
+    {
+      "platform": "Windows 10 x64 MSVC",
+      "command": "cargo build -vv --locked --release --package repopact-desktop --features custom-protocol -j 2",
+      "result": "passed twice from separate clean target builds at implementation commit 39e0524fcd4fffe7f2a12ad61d25f13a9f7c7c8e",
+      "artifact": {
+        "bytes": 26998784,
+        "sha256": "21211B7050BD12F4403DD6B849E772C5CA0BBFABE108EE8E7A4433874FDF207F"
+      },
+      "details": "Both executables had identical SHA-256 and zero differing bytes. Their six PE section hashes matched exactly. dumpbin showed the PE reproducibility directory and stable deterministic COFF timestamp 0x568c1491; verbose Cargo output confirmed the target-specific /Brepro argument."
+    },
+    {
+      "platform": "Windows 10 x64 MSVC",
+      "command": "rustfmt --edition 2021 --check src-tauri/build.rs",
+      "result": "passed"
+    },
+    {
+      "platform": "Windows 10 x64 MSVC",
+      "command": "cargo fmt --all -- --check",
+      "result": "failed for unrelated pre-existing formatting in rust/crates/repopact-mobile-acquisition/src/operation.rs",
+      "limitation": "The changed build.rs passes its focused formatter check. The unrelated file was not modified."
+    },
+    {
+      "platform": "Windows 10 x64 MSVC",
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "acceptance": "pending",
+  "reason": "The Windows MSVC PE metadata cause is identified and two clean builds of the correction are byte-identical. RPS-015 also requires independent clean source exports, artifact identity, wheel contents, native binary provenance, and documented platform normalization as a broader cross-platform release-readiness gate. Those full criteria are not established by this focused correction. No runtime launch, installer, package, or release is claimed."
+}
